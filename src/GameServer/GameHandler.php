@@ -12,6 +12,12 @@ use oldsu_stream_server\GameServer\Handlers\ScoreSubmissionHandler;
 function HandleRequest($connection, $request){
     //Include Handlers
     include "Handle/PackListHandler.php";
+    include "Handle/LeaderboardHandler.php";
+    include "Handle/PreviewHandler.php";
+    include "Handle/CrashHandler.php";
+    include "Handle/MapDownloadHandler.php";
+    include "Handle/NewsHandler.php";
+    include "Handle/ScoreSubmissionHandler.php";
 
     switch($request->path()){
         case "/stream/dl/list3.php":
