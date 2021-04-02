@@ -1,6 +1,7 @@
 {
     "require": {
         "workerman/workerman": "^4.0",
-        "sergeytsalkov/meekrodb": "^2.3"
+        "sergeytsalkov/meekrodb": "^2.3",
+        "vlucas/phpdotenv": "^5.3"
     }
 }
