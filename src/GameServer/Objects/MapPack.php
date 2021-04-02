@@ -73,7 +73,7 @@ class MapPack implements Writable
 		$split_beatmaps = explode(";", $beatmaps);
 
 		foreach($split_beatmaps as $beatmap){
-			$databaseBeatmap = Beatmap::FromDatabaseById($beatmap);
+			$databaseBeatmap = Beatmap::FromDatabaseBySetId($beatmap);
 
 			$mappack->AddBeatmap($databaseBeatmap);
 		}

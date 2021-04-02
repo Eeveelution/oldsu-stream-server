@@ -46,6 +46,21 @@ class Beatmap implements Writable
 		//Return new Beatmap
 		return new Beatmap($filename, $metadata, $revision);
     }
+	/**
+	 * @param int $id Beatmap Set ID
+	 *
+	 * @return Beatmap[] Beatmap Array
+	 */
+	public static function FromDatabaseBySetId($id) : Beatmap {
+		//Query Map
+		$database_results = DB::queryOneRow("SELECT * FROM stream_beatmaps WHERE LocalBeatmapsetID=%i", $id);
+		//Gather Results
+		$filename = $database_results["Filename"];
+		$revision = $database_results["Revision"];
+		$metadata = $database_results["Metadata"];
+		//Return new Beatmap
+		return new Beatmap($filename, $metadata, $revision);
+	}
 
 	/**
 	 * @param string $filename .osz2 Filename to Query by
