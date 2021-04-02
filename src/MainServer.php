@@ -8,13 +8,21 @@ namespace oldsu_stream_server {
 
     use oldsu_stream_server\GameServer;
     use oldsu_stream_server\WebsiteHandler;
+	use Workerman\Connection\TcpConnection;
+	use Workerman\Protocols\Http\Request;
 
-    class MainServer
+	class MainServer
     {
         //HTTP Worker, Accepts all requests
         private $http_worker;
-        //Constructor, Takes in a Location on where to run the MainServer
-        public function __construct($location)
+        //
+
+		/**
+		 * Constructor, Takes in a Location on where to run the MainServer
+		 *
+		 * @param string $location Where to run the Server
+		 */
+		public function __construct($location)
         {
             //Include Necessary Files
             require "GameServer/GameHandler.php";
@@ -27,12 +35,20 @@ namespace oldsu_stream_server {
                 $this->onMessage($connection, $request);
             };
         }
-        //Is responsible for starting the GameServer
-        public function start() {
+
+		/**
+		 * Is responsible for starting the GameServer
+		 */
+		public function start() {
             Worker::runAll();
         }
-        //Handles incoming requests
-        private function onMessage($connection, $request){
+
+		/**
+		 * Handles incoming requests
+		 * @param $connection TcpConnection
+		 * @param $request Request
+		 */
+		private function onMessage($connection, $request){
             //Distinguish between Website and Game Server
             if(strpos($request->path(), "/stream") === 0){
                 GameServer\HandleRequest($connection, $request);

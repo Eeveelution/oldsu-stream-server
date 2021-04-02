@@ -9,6 +9,10 @@ use oldsu_stream_server\GameServer\Handlers\PackListHandler;
 use oldsu_stream_server\GameServer\Handlers\PreviewHandler;
 use oldsu_stream_server\GameServer\Handlers\ScoreSubmissionHandler;
 
+/**
+ * @param $connection
+ * @param $request
+ */
 function HandleRequest($connection, $request){
     //Include Handlers
     include "Handlers/PackListHandler.php";
