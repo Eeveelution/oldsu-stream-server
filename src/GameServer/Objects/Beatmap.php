@@ -41,4 +41,43 @@ class Beatmap implements Writable
 
 		return new Beatmap($filename, $metadata, $revision);
     }
+
+	/**
+	 * @param string $filename .osz2 Filename to Query by
+	 *
+	 * @return Beatmap[] Beatmap Array
+	 */
+	public static function FromDatabaseByFilename($filename) : array {
+    	$database_results = DB::query("SELECT * FROM stream_beatmaps WHERE Filename=%s", $filename);
+
+    	$beatmaps = array();
+
+    	foreach ($database_results as $database_result){
+			$filename = $database_result["Filename"];
+			$revision = $database_result["Revision"];
+			$metadata = $database_result["Metadata"];
+
+			$beatmaps[] = new Beatmap($filename, $metadata, $revision);
+		}
+
+    	return $beatmaps;
+	}
+
+	/**
+	 * @param string $filename Filename to Query by
+	 * @param int $difficulty Difficulty of Map
+	 *
+	 * @return Beatmap
+	 */
+	public static function FromDatabaseByFilenameDifficulty($filename, $difficulty) : Beatmap {
+		$database_result  = DB::queryOneRow("SELECT * FROM stream_beatmaps WHERE Filename=%s AND Difficulty=%i", $filename, $difficulty);
+
+		$filename = $database_result["Filename"];
+		$revision = $database_result["Revision"];
+		$metadata = $database_result["Metadata"];
+
+		$beatmaps[] = new Beatmap($filename, $metadata, $revision);
+
+		return $beatmaps;
+	}
 }
