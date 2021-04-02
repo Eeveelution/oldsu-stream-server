@@ -17,9 +17,10 @@ but if you want to run it regardless, here are the steps:
 
 1. Clone the repository using: ``git clone https://github.com/Eeveelution/oldsu-stream-server``
 1. Go into the folder where it extracted (NOT IN ``/src/``)
-1. Import the ``sql/import.sql`` File into your MySQL Database
-1. Copy ``.env.example`` and paste as ``.env``
-1. Fill the contents of ``.env`` with your values
+1. Run ``composer install`` to install all dependencies
+3. Import the ``sql/import.sql`` File into your MySQL Database
+4. Copy ``.env.example`` and paste as ``.env``
+5. Fill the contents of ``.env`` with your values
  <br><br>Example Contents:
     ````
     MYSQL_USERNAME=eevee
