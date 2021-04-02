@@ -22,6 +22,8 @@ class MapPack implements Writable
      */
     public function __construct($packid, $packname)
     {
+    	require_once "Beatmap.php";
+
         $this->packid = $packid;
         $this->packname = $packname;
     }
@@ -60,6 +62,21 @@ class MapPack implements Writable
 
     public static function GetPackById($id) : MapPack {
 		//Query Database
-		$results = DB::queryOneRow("SELECT * FROM stream_packs WHERE PackID=%s", $id);
+		$results = DB::queryOneRow("SELECT * FROM stream_packs WHERE LocalID=%s", $id);
+
+		$packname = $results["PackName"];
+		$packId = $results["PackID"];
+		$beatmaps = $results["Beatmaps"];
+
+		$mappack = new MapPack($packId, $packname);
+
+		$split_beatmaps = explode(";", $beatmaps);
+
+		foreach($split_beatmaps as $beatmap){
+			$databaseBeatmap = Beatmap::FromDatabaseById($beatmap);
+
+			$mappack->AddBeatmap($databaseBeatmap);
+		}
+		return $mappack;
 	}
 }

@@ -26,7 +26,8 @@ class Beatmap implements Writable
     public function Write() : string {
         return $this->filename . "\t" .
                $this->metadata . "\t" .
-               $this->revision . "\n";
+			   $this->metadata . "\t" .
+		       $this->revision . "\n";
     }
 	/**
 	 * Gets a Beatmap from the Database given a ID

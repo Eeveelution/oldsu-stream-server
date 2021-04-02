@@ -4,6 +4,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../vendor/sergeytsalkov/meekrodb/db.class.php';
 require_once __DIR__ . '/MainServer.php';
 
+require_once __DIR__ . '/GameServer/Interfaces/Writable.php';
+
 \Dotenv\Dotenv::createImmutable(__DIR__."/..")->load();
 
 set_error_handler(static function($errno, $errstr, $errfile, $errline) {

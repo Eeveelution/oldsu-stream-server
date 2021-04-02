@@ -16,17 +16,6 @@ class LeaderboardHandler
 	 */
     public static function Handle($connection, $request) : void
 	{
-		$return = "";
-		//Query all Beatmap Packs
-		$packIds = DB::query("SELECT LocalID FROM stream_packs");
-		//Go through all packIds and Write
-		foreach($packIds as $id){
-			//Query and Write Pack
-			$pack = \MapPack::GetPackById($id["LocalID"]);
-			//Write
-			$return .= $pack->Write();
-		}
-		//Send
-		$connection->send($return);
+
     }
 }
