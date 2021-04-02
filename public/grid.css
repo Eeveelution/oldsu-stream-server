@@ -17,13 +17,16 @@
 .logo-area {
     grid-area: logo-area;
     text-align: center;
+    line-height: 500%;
 }
 .user-area {
     grid-area: user-area;
 }
 .navbar {
     grid-area: navbar;
-    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
 }
 .content {
     grid-area: content;
