@@ -49,7 +49,7 @@ class Beatmap implements Writable
 	/**
 	 * @param int $id Beatmap Set ID
 	 *
-	 * @return Beatmap Beatmap 
+	 * @return Beatmap Beatmap
 	 */
 	public static function FromDatabaseBySetId($id) : Beatmap {
 		//Query Map

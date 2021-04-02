@@ -15,6 +15,8 @@ class MapDownloadHandler
 	 */
     public static function Handle($connection, $request) : void
 	{
+		$post_string = $request->post();
 
+		echo var_dump($post_string);
     }
 }
