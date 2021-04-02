@@ -1,0 +1,33 @@
+.container {
+    margin: auto;
+    padding-left: 50px;
+    display: grid;
+    width: 75%;
+    height: 100%;
+    grid-template-areas: "logo-area user-area"
+    "navbar content"
+    "footer footer";
+    grid-template-columns: 240px 32fr 2fr;
+    grid-template-rows: 80px 500% 50%;
+}
+.container > div {
+    border: 1px dashed #888;
+}
+
+.logo-area {
+    grid-area: logo-area;
+    text-align: center;
+}
+.user-area {
+    grid-area: user-area;
+}
+.navbar {
+    grid-area: navbar;
+    text-align: center;
+}
+.content {
+    grid-area: content;
+}
+.footer {
+    grid-area: footer;
+}
