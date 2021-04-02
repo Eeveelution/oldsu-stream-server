@@ -57,4 +57,9 @@ class MapPack implements Writable
 		//Return Written String
         return $return_string;
     }
+
+    public static function GetPackById($id) : MapPack {
+		//Query Database
+		$results = DB::queryOneRow("SELECT * FROM stream_packs WHERE PackID=%s", $id);
+	}
 }

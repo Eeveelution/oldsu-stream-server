@@ -19,5 +19,5 @@ DB::$dbName = getenv("MYSQL_DATABASE");
 DB::$host = getenv("MYSQL_LOCATION");
 
 //Create and Start MainServer
-$server = new oldsu_stream_server\MainServer("http://127.0.0.1:80");
+$server = new oldsu_stream_server\MainServer(getenv("SERVER_LOCATION"));
 $server->start();
