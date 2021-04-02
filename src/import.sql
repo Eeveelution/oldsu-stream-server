@@ -44,6 +44,7 @@ CREATE TABLE stream_beatmaps (
     RankedStatus varchar(20) NOT NULL,
     Difficulty tinyint NOT NULL,
     LocalBeatmapsetID int(11) NOT NULL,
+    Metadata text NOT NULL,
     PRIMARY KEY (LocalID)
 );
 
