@@ -13,7 +13,7 @@ use oldsu_stream_server\GameServer\Handlers\ScoreSubmissionHandler;
  * @param $connection
  * @param $request
  */
-function HandleRequest($connection, $request){
+function HandleRequest($connection, $request) {
     //Include Handlers
     include "Handlers/PackListHandler.php";
     include "Handlers/LeaderboardHandler.php";

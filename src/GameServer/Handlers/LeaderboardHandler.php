@@ -13,7 +13,8 @@ class LeaderboardHandler
 	 * @param $connection TcpConnection
 	 * @param $request Request
 	 */
-    public static function Handle($connection, $request){
+    public static function Handle($connection, $request) : void
+	{
 
     }
 }

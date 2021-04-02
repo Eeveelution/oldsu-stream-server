@@ -6,4 +6,5 @@
       <path value="$PROJECT_DIR$/vendor/workerman/workerman" />
     </include_path>
   </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />
 </project>

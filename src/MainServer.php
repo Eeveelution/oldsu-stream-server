@@ -14,7 +14,7 @@ namespace oldsu_stream_server {
 	class MainServer
     {
         //HTTP Worker, Accepts all requests
-        private $http_worker;
+		private Worker $http_worker;
         //
 
 		/**
@@ -39,7 +39,7 @@ namespace oldsu_stream_server {
 		/**
 		 * Is responsible for starting the GameServer
 		 */
-		public function start() {
+		public function start() : void {
             Worker::runAll();
         }
 
@@ -48,7 +48,8 @@ namespace oldsu_stream_server {
 		 * @param $connection TcpConnection
 		 * @param $request Request
 		 */
-		private function onMessage($connection, $request){
+		private function onMessage($connection, $request) : void
+		{
             //Distinguish between Website and Game Server
             if(strpos($request->path(), "/stream") === 0){
                 GameServer\HandleRequest($connection, $request);
