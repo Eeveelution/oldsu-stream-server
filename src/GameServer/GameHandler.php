@@ -9,9 +9,14 @@ use oldsu_stream_server\GameServer\Handlers\PackListHandler;
 use oldsu_stream_server\GameServer\Handlers\PreviewHandler;
 use oldsu_stream_server\GameServer\Handlers\ScoreSubmissionHandler;
 
+use Workerman\Connection\TcpConnection;
+use Workerman\Protocols\Http\Request;
+
 /**
- * @param $connection
- * @param $request
+ * Handles Requests to the Game Server
+ *
+ * @param TcpConnection $connection
+ * @param Request $request
  */
 function HandleRequest($connection, $request) {
     //Include Handlers
@@ -22,25 +27,25 @@ function HandleRequest($connection, $request) {
     include "Handlers/MapDownloadHandler.php";
     include "Handlers/NewsHandler.php";
     include "Handlers/ScoreSubmissionHandler.php";
-
+	//Switch Path and route request
     switch($request->path()){
         case "/stream/dl/list3.php":
-            PackListHandler::Handle($request, $connection);
+            PackListHandler::Handle($connection, $request);
             break;
         case "/stream/dl/download2.php":
-            MapDownloadHandler::Handle($request, $connection);
+            MapDownloadHandler::Handle($connection, $request);
             break;
         case "/stream/score/retrieve.php":
-            LeaderboardHandler::Handle($request, $connection);
+            LeaderboardHandler::Handle($connection, $request);
             break;
         case "/stream/admin/crash.php":
-            CrashHandler::Handle($request, $connection);
+            CrashHandler::Handle($connection, $request);
             break;
         case "/stream/dl/preview.php":
-            PreviewHandler::Handle($request, $connection);
+            PreviewHandler::Handle($connection, $request);
             break;
         case "/stream/score/submit.php":
-            ScoreSubmissionHandler::Handle($request, $connection);
+            ScoreSubmissionHandler::Handle($connection, $request);
             break;
     }
 }
