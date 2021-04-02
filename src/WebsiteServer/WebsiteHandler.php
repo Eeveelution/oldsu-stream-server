@@ -14,6 +14,7 @@ use Exception;
 function HandleRequest($connection, $request){
     //Switch and Route path
 	switch($request->path()){
+		case "":
 		case "/":
 			$html = file_get_contents(getcwd()."/../public/index.html");
 			$connection->send($html);
