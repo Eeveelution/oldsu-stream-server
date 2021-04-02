@@ -6,15 +6,15 @@ class MapPack implements Writable
     /**
      * @var string Pack ID
      */
-    private $packid;
+	private string $packid;
     /**
      * @var string Pack Name
      */
-    private $packname;
+	private string $packname;
     /**
      * @var Beatmap[] Beatmap Array
      */
-    private $beatmaps = array();
+	private array $beatmaps = array();
 
     /**
      * MapPack constructor.
@@ -29,15 +29,14 @@ class MapPack implements Writable
     /**
      * @param $beatmap Beatmap Beatmap which is supposed to be added to this pack
      */
-    public function AddBeatmap($beatmap){
+    public function AddBeatmap($beatmap) : void {
         if(!$beatmap instanceof \Beatmap){
             trigger_error("What you are trying to add isn't a Beatmap!", E_USER_ERROR);
         }
         $this->beatmaps[] = $beatmap;
     }
     //Writes pack to a String
-    public function Write()
-    {
+    public function Write() : string {
         if(count($this->beatmaps) === 0){
             trigger_error("No Beatmaps have been added to the Pack!", E_USER_ERROR);
         }

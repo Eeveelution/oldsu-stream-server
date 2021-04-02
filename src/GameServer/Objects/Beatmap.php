@@ -6,7 +6,6 @@ class Beatmap implements Writable
 	private string $revision;
 	private string $metadata;
 	private string $filename;
-
 	/**
      * Beatmap constructor.
      *
@@ -14,15 +13,13 @@ class Beatmap implements Writable
      * @param $metadata string Map Metadata (Artist - Title)
      * @param $revision string Map Revision (1.0)
      */
-    public function __construct($filename, $metadata, $revision)
-    {
+    public function __construct($filename, $metadata, $revision) {
         $this->filename = $filename;
         $this->metadata = $metadata;
         $this->revision = $revision;
     }
     //Writes it to a String
-    public function Write() : string
-    {
+    public function Write() : string {
         return $this->filename . "\t" .
                $this->metadata . "\t" .
                $this->revision . "\n";
@@ -36,8 +33,12 @@ class Beatmap implements Writable
 	 * @return Beatmap Beatmap from Database
 	 */
     public static function FromDatabaseById($id) : Beatmap {
-		$database_results = DB::query("SELECT * FROM stream_beatmaps WHERE LocalID=%i", $id);
+		$database_results = DB::queryOneRow("SELECT * FROM stream_beatmaps WHERE LocalID=%i", $id);
 
-		
+		$filename = $database_results["Filename"];
+		$revision = $database_results["Revision"];
+		$metadata = $database_results["Metadata"];
+
+		return new Beatmap($filename, $metadata, $revision);
     }
 }
