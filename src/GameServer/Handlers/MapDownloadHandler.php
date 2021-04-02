@@ -21,6 +21,10 @@ class MapDownloadHandler
 
 		$post = $request->post();
 
+		if(strpos($post["filename"], "./" !== false)){
+			$connection->send("fuck off");
+		}
+
 		$mappack = MapPack::GetPackByPackId($post["pack"]);
 		$beatmap = $mappack->GetMapByFilename($post["filename"]);
 

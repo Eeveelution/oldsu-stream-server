@@ -100,7 +100,7 @@ class MapPack implements Writable
 		return $mappack;
 	}
 
-	public function GetMapByFilename($filename) : Beatmap {
+	public function GetMapByFilename($filename) : ?Beatmap {
 		foreach($this->beatmaps as $beatmap){
 			if($beatmap->filename === $filename){
 				return $beatmap;
