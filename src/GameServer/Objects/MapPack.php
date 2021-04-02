@@ -15,7 +15,6 @@ class MapPack implements Writable
      * @var Beatmap[] Beatmap Array
      */
 	private array $beatmaps = array();
-
     /**
      * MapPack constructor.
      * @param $packid string Pack ID
@@ -30,15 +29,32 @@ class MapPack implements Writable
      * @param $beatmap Beatmap Beatmap which is supposed to be added to this pack
      */
     public function AddBeatmap($beatmap) : void {
+    	//Type Check
         if(!$beatmap instanceof \Beatmap){
             trigger_error("What you are trying to add isn't a Beatmap!", E_USER_ERROR);
         }
+        //Append
         $this->beatmaps[] = $beatmap;
     }
-    //Writes pack to a String
-    public function Write() : string {
+	/**
+	 * Writes MapPack to a String
+	 *
+	 * @return string Written String
+	 */
+	public function Write() : string {
+		//Check whether Pack has Beatmaps
         if(count($this->beatmaps) === 0){
             trigger_error("No Beatmaps have been added to the Pack!", E_USER_ERROR);
         }
+		//Define Return string
+        $return_string = "";
+		//Write Pack ID and Pack name
+        $return_string .= $this->packid . "\t" . $this->packname . "\n";
+		//Write all maps in Pack
+        foreach($this->beatmaps as $beatmap) {
+        	$return_string .= $beatmap->Write();
+		}
+		//Return Written String
+        return $return_string;
     }
 }
