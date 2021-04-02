@@ -36,6 +36,8 @@ class Beatmap implements Writable
 	 * @return Beatmap Beatmap from Database
 	 */
     public static function FromDatabaseById($id) : Beatmap {
+		$database_results = DB::query("SELECT * FROM stream_beatmaps WHERE LocalID=%i", $id);
 
+		
     }
 }

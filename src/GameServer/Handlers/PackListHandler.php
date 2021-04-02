@@ -10,8 +10,8 @@ class PackListHandler
 	/**
 	 * Handles the Request
 	 *
-	 * @param $connection TcpConnection
-	 * @param $request Request
+	 * @param $connection TcpConnection Connection
+	 * @param $request Request Request
 	 */
     public static function Handle($connection, $request) : void
 	{
