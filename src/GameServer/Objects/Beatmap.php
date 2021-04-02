@@ -3,9 +3,9 @@
 //Beatmap, used for Map Packs
 class Beatmap implements Writable
 {
-	private string $revision;
-	private string $metadata;
-	private string $filename;
+	public string $revision;
+	public string $metadata;
+	public string $filename;
 	/**
      * Beatmap constructor.
      *

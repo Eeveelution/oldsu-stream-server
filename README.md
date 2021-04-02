@@ -26,7 +26,7 @@ but if you want to run it regardless, here are the steps:
     MYSQL_PASSWORD=ssh
     MYSQL_DATABASE=flanderemod
     MYSQL_LOCATION=localhost
-    PUBLIC_HTML=/public
+    STORAGE_FOLDER=/home/server/storage
    SERVER_LOCATION=http://127.0.0.1:80
     ````
 1. Run the main script with the PHP interpreter by running: ``php Main.php``

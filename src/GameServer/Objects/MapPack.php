@@ -79,4 +79,33 @@ class MapPack implements Writable
 		}
 		return $mappack;
 	}
+
+	public static function GetPackByPackId($id) : MapPack {
+		//Query Database
+		$results = DB::queryOneRow("SELECT * FROM stream_packs WHERE PackID=%s", $id);
+
+		$packname = $results["PackName"];
+		$packId = $results["PackID"];
+		$beatmaps = $results["Beatmaps"];
+
+		$mappack = new MapPack($packId, $packname);
+
+		$split_beatmaps = explode(";", $beatmaps);
+
+		foreach($split_beatmaps as $beatmap){
+			$databaseBeatmap = Beatmap::FromDatabaseBySetId($beatmap);
+
+			$mappack->AddBeatmap($databaseBeatmap);
+		}
+		return $mappack;
+	}
+
+	public function GetMapByFilename($filename) : Beatmap {
+		foreach($this->beatmaps as $beatmap){
+			if($beatmap->filename === $filename){
+				return $beatmap;
+			}
+		}
+		return null;
+	}
 }
