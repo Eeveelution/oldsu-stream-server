@@ -1,51 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-
-    <link rel="stylesheet" href="static/global.css">
-    <link rel="stylesheet" href="static/grid.css">
-    <link rel="stylesheet" href="static/index.css">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,300;1,100;1,500;1,900&display=swap" rel="stylesheet">
+    {% include 'shared/head.twig' %}
 
     <title>oldsu!stream - Main Page</title>
 </head>
 <body>
-    <div class="container">
-        <div class="logo-area-container">
-            <b style="font-size: 24pt">oldsu!stream</b>
-        </div>
-        <div class="user-area-container">
-            <div class="user-area">
-                {% if logged_in_user is defined %}
-                    <img src="https://oldsu.ayyeve.xyz/avatars/{{ logged_in_user }}" width="48" height="48"/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    Welcome {{ logged_in_user }}!
-
-                {% else %}
-                    <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="1" height="48"/>
-                    You are not logged in!
-                {% endif %}
-            </div>
-        </div>
-        <div class="navbar">
-            <ul>
-                <li><a href="leaderboards">Leaderboards</a></li>
-                <li><a href="beatmaps">Beatmaps</a></li>
-                <li><a href="download">Download</a></li>
-                <li><a href="mapsubmit">Map Submissions</a></li>
-                <li><a href="info">Information</a></li>
-            </ul>
-        </div>
-        <div class="content_container">
-            <div class="content">
-            </div>
-        </div>
-        <div class="footer">
-            Made by Eevee in 2021
-        </div>
-    </div>
+    {% embed 'shared/layout.twig' %}
+        {% block content %}
+            Hi owo
+        {% endblock %}
+    {% endembed %}
 </body>
 </html>

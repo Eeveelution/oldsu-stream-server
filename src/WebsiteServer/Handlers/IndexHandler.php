@@ -16,7 +16,7 @@ class IndexHandler {
 
 			$connection->send($response);
 		}catch(Exception $e){
-
+			echo $e;
 		}
 	}
 }

@@ -5,30 +5,18 @@
 
     <link rel="stylesheet" href="static/global.css">
     <link rel="stylesheet" href="static/grid.css">
+    <link rel="stylesheet" href="static/index.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,300;1,100;1,500;1,900&display=swap" rel="stylesheet">
 
     <title>oldsu!stream - Main Page</title>
 </head>
 <body>
-<div class="container">
-    <div class="logo-area-container">
-        <b style="font-size: 24pt">oldsu!stream</b>
-    </div>
-    <div class="user-area-container">
-        {% if logged_in_user is defined %}
-            Welcome {{ logged_in_user }}!
-        {% else %}
-            You are not logged in!
-        {% endif %}
-    </div>
-    <div class="navbar">
+    {% extends 'shared/layout.twig' %}
 
-    </div>
-    <div class="content_container">
-
-    </div>
-    <div class="footer">
-        Made by Eevee in 2021
-    </div>
-</div>
+    {% block content %}
+        Hi
+    {% endblock %}
 </body>
 </html>

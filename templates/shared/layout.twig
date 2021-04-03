@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="logo-area-container">
+        <b style="font-size: 24pt">oldsu!stream</b>
+    </div>
+    {% include 'shared/user-area.twig' %}
+
+    {% include 'shared/navbar.twig' %}
+
+    <div class="content_container">
+        <div class="content">
+            {% block content %}
+                Fill content here...
+            {% endblock %}
+        </div>
+    </div>
+    <div class="footer">
+        Made by Eevee in 2021
+    </div>
+</div>

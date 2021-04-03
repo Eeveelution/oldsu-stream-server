@@ -1,0 +1,13 @@
+<div class="user-area-container">
+    <div class="user-area">
+        {% if logged_in_user is defined %}
+            <img src="https://oldsu.ayyeve.xyz/avatars/{{ logged_in_user }}" width="48" height="48"/>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            Welcome {{ logged_in_user }}!
+
+        {% else %}
+            <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="1" height="48"/>
+            You are not logged in!
+        {% endif %}
+    </div>
+</div>
