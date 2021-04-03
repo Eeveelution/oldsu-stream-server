@@ -14,15 +14,22 @@
 </head>
 <body>
     <div class="container">
-        <div class="logo-area">
+        <div class="logo-area-container">
             <b style="font-size: 24pt">oldsu!stream</b>
         </div>
-        <div class="user-area">
-            {% if logged_in_user is defined %}
-                Welcome {{ logged_in_user }}!
-            {% else %}
-                You are not logged in!
-            {% endif %}
+        <div class="user-area-container">
+            <div class="user-area">
+                {% if logged_in_user is defined %}
+                    <div class="avatar">
+                        <img src="https://oldsu.ayyeve.xyz/avatars/{{ logged_in_user }}" width="48" height="48"/>
+                    </div>
+                    <div class="user-area-text">
+                        Welcome {{ logged_in_user }}!
+                    </div>
+                {% else %}
+                    You are not logged in!
+                {% endif %}
+            </div>
         </div>
         <div class="navbar">
             <ul>
@@ -35,7 +42,6 @@
         </div>
         <div class="content_container">
             <div class="content">
-                Hi
             </div>
         </div>
         <div class="footer">

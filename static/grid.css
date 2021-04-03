@@ -11,10 +11,10 @@
     grid-template-rows: 80px 100% 20%;
 }
 .container > div {
-    /*border: 1px dashed #888;*/
+    border: 1px dashed #888;
 }
 
-.logo-area {
+.logo-area-container {
     background-color: #252525;
     margin-left: 10px;
     margin-right: 5px;
@@ -25,13 +25,10 @@
     align-items: center;
     justify-content: center;
 }
-.user-area {
+.user-area-container {
     background-color: #252525;
     margin-left: 10px;
     grid-area: user-area;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 .navbar {
     background-color: #252525;
@@ -43,7 +40,27 @@
 .content {
     background-color: #252525;
     padding-left: 10px;
+    padding-right: 15px;
     padding-top: 15px;
+}
+
+.user-area {
+    border: 1px dashed #888;
+    background-color: #252525;
+    padding-left: 25px;
+    padding-right: 15px;
+    padding-top: 30px;
+    text-align: left;
+}
+
+.avatar {
+    border: 1px dashed #888;
+    margin-right: 750px;
+}
+
+.user-area-text {
+    border: 1px dashed #888;
+
 }
 
 .content_container {
