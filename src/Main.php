@@ -1,6 +1,7 @@
 <?php
 
 use Dotenv\Dotenv;
+use Mimey\MimeTypes;
 //Include Files
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../vendor/sergeytsalkov/meekrodb/db.class.php';
@@ -24,10 +25,10 @@ DB::$password = $_ENV["MYSQL_PASSWORD"];
 DB::$dbName = $_ENV["MYSQL_DATABASE"];
 DB::$host = $_ENV["MYSQL_LOCATION"];
 
-//Setup Twig
+//Setup Twig & Mimes
 GlobalVariables::$loader = new Twig\Loader\FilesystemLoader(__DIR__ . '/../templates/');
 GlobalVariables::$twig = new Twig\Environment(GlobalVariables::$loader);
-
+GlobalVariables::$mimes = new MimeTypes();
 //Create and Start MainServer
 $server = new oldsu_stream_server\MainServer($_ENV["SERVER_LOCATION"]);
 $server->start();

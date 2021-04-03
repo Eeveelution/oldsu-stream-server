@@ -10,6 +10,7 @@ use Twig\Error\SyntaxError;
 use Workerman\Connection\TcpConnection;
 use Workerman\Protocols\Http\Request;
 use Exception;
+use Workerman\Protocols\Http;
 
 /**
  * Handles Requests to the Main Website
@@ -22,8 +23,23 @@ function HandleRequest($connection, $request) {
     require_once __DIR__ . '/../GlobalVariables.php';
 
     if(strpos($request->path(), "/static") === 0){
-    	$data = file_get_contents(getcwd() ."/..". $request->path());
-    	$connection->send($data);
+    	try {
+			$filepath = getcwd() . "/.." . $request->path();
+			$pathinfo = pathinfo($filepath);
+			$html = file_get_contents($filepath);
+			$mimetype = \GlobalVariables::$mimes->getMimeType($pathinfo["extension"]);
+
+			$headers = [
+				"Content-Type" => $mimetype
+			];
+
+			$response = new Http\Response(200, $headers, $html);
+
+			$connection->send($response);
+		}catch(Exception $e){
+    		$connection->send("An error occured...");
+		}
+    	return;
 	}
 
     //Switch and Route path
