@@ -25,7 +25,7 @@ DB::$dbName = $_ENV["MYSQL_DATABASE"];
 DB::$host = $_ENV["MYSQL_LOCATION"];
 
 //Setup Twig
-GlobalVariables::$loader = new Twig\Loader\FilesystemLoader(__DIR__ . '/../public/');
+GlobalVariables::$loader = new Twig\Loader\FilesystemLoader(__DIR__ . '/../templates/');
 GlobalVariables::$twig = new Twig\Environment(GlobalVariables::$loader);
 
 //Create and Start MainServer
