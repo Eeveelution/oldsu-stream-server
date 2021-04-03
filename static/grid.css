@@ -38,10 +38,6 @@
 }
 
 .content {
-    width: fit-content;
-    /* To adjust the height as well */
-    height: fit-content;
-    display: table;
     background-color: #252525;
     padding-left: 10px;
     padding-right: 15px;
@@ -59,6 +55,9 @@
 }
 
 .content_container {
+    display: block;
+    overflow: auto;
+    max-height: 620px;
     background-color: #252525;
     padding-left: 10px;
     margin-left: 10px;

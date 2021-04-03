@@ -29,5 +29,5 @@ li a:hover {
 }
 
 .fixed_size_text {
-     display: inline-block;
+     overflow: scroll !important;
 }
