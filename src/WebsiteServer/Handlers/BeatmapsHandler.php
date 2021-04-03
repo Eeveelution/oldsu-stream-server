@@ -14,7 +14,6 @@ class BeatmapsHandler {
 		foreach($packIds as $id){
 			//Query and append Map
 			$maps[] = StreamMapPack::GetPackById($id["LocalID"]);
-			$maps[] = StreamMapPack::GetPackById($id["LocalID"]);
 		}
 		try {
 			$html = GlobalVariables::$twig->render('beatmaps.twig', ["packs" => $maps]);
