@@ -8,7 +8,7 @@
     "navbar content"
     "footer footer";
     grid-template-columns: 350px 32fr 2fr;
-    grid-template-rows: 80px 125% 15%;
+    grid-template-rows: 1fr 8fr 1fr;
 }
 .container > div {
     /*border: 1px dashed #888;*/
@@ -38,6 +38,10 @@
 }
 
 .content {
+    width: fit-content;
+    /* To adjust the height as well */
+    height: fit-content;
+    display: table;
     background-color: #252525;
     padding-left: 10px;
     padding-right: 15px;
