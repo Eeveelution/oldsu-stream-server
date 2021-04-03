@@ -11,7 +11,7 @@ class IndexHandler {
 	 */
 	public static function Handle($connection, $request) : void {
 		try {
-			$html = GlobalVariables::$twig->render('index.twig', ["logged_in_user" => "Eevee"]);
+			$html = GlobalVariables::$twig->render('index.twig');
 			$response = new Response(200, [], $html);
 
 			$connection->send($response);

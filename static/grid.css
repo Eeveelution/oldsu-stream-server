@@ -8,7 +8,7 @@
     "navbar content"
     "footer footer";
     grid-template-columns: 350px 32fr 2fr;
-    grid-template-rows: 80px 100% 20%;
+    grid-template-rows: 80px 125% 15%;
 }
 .container > div {
     /*border: 1px dashed #888;*/
