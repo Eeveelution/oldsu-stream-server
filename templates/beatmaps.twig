@@ -16,15 +16,16 @@
                 {{ pack.packname }}
             </div>
             {% for map in pack.beatmaps %}
-                <div class="pack_container">
+
+                <div class="pack_container" style="background-image: url('cdn/thumbnails/{{ map.beatmap_id }}'); ">
                     {{ map.metadata }}<br>
                     Created by {{ map.creator }}
                 </div>
-                <div class="pack_container">
+                <div class="pack_container" style="background-image: url('cdn/thumbnails/{{ map.beatmap_id }}')">
                     {{ map.metadata }}<br>
                     Created by {{ map.creator }}
                 </div>
-                <div class="pack_container">
+                <div class="pack_container" style="background-image: url('cdn/thumbnails/{{ map.beatmap_id }}')">
                     {{ map.metadata }}<br>
                     Created by {{ map.creator }}
                 </div>

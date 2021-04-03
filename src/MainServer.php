@@ -8,6 +8,7 @@ namespace oldsu_stream_server {
     use oldsu_stream_server\WebsiteHandler;
 	use Workerman\Connection\TcpConnection;
 	use Workerman\Protocols\Http\Request;
+	use oldsu_stream_server\CdnHandler\CdnServer;
 
 	class MainServer
     {
@@ -30,7 +31,7 @@ namespace oldsu_stream_server {
         }
 
 		/**
-		 * Is responsible for starting the GameServer
+		 * Is responsible for starting the GameHandler
 		 */
 		public function Start() : void {
             Worker::runAll();
@@ -47,7 +48,7 @@ namespace oldsu_stream_server {
             if(strpos($request->path(), "/stream") === 0){
                 GameServer\GameHandler::HandleRequest($connection, $request);
             } else if(strpos($request->path(), "/cdn") === 0){
-				GameServer\GameHandler::HandleRequest($connection, $request);
+				CdnServer::HandleRequest($connection, $request);
 			}else {
 				WebsiteHandler\WebsiteHandler::HandleRequest($connection, $request);
             }

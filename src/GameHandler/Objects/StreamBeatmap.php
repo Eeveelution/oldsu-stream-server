@@ -8,6 +8,8 @@ class StreamBeatmap implements Writable
 	public string $metadata;
 	public string $filename;
 	public string $creator;
+
+	public int $beatmap_id;
 	/**
      * Beatmap constructor.
      *
@@ -61,8 +63,11 @@ class StreamBeatmap implements Writable
 		$filename = $database_results["Filename"];
 		$revision = $database_results["Revision"];
 		$metadata = $database_results["Metadata"];
+
+		$beatmap = new StreamBeatmap($filename, $metadata, $revision);
+		$beatmap->beatmap_id = $database_results["LocalID"];
 		//Return new Beatmap
-		return new StreamBeatmap($filename, $metadata, $revision);
+		return $beatmap;
 	}
 
 	/**
@@ -81,8 +86,11 @@ class StreamBeatmap implements Writable
 			$filename = $database_result["Filename"];
 			$revision = $database_result["Revision"];
 			$metadata = $database_result["Metadata"];
+
+			$beatmap = new StreamBeatmap($filename, $metadata, $revision);
+			$beatmap->beatmap_id = $database_result["LocalID"];
 			//Append new Beatmap to list
-			$beatmaps[] = new StreamBeatmap($filename, $metadata, $revision);
+			$beatmaps[] = $beatmap;
 		}
 		//Return Beatmaps
     	return $beatmaps;
@@ -101,7 +109,10 @@ class StreamBeatmap implements Writable
 		$filename = $database_result["Filename"];
 		$revision = $database_result["Revision"];
 		$metadata = $database_result["Metadata"];
+
+		$beatmap = new StreamBeatmap($filename, $metadata, $revision);
+		$beatmap->beatmap_id = $database_result["LocalID"];
 		//Return new Beatmap
-		return new StreamBeatmap($filename, $metadata, $revision);
+		return $beatmap;
 	}
 }
