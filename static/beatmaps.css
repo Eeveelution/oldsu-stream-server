@@ -1,8 +1,10 @@
 .pack_title {
-    background-color: #191a1c;
+    float: left;
+    background-color: #3b3b3b;
     width: 100%;
     padding: 5px;
     text-align: center;
+    margin-top: 15px;
 }
 
 .pack_container {
@@ -10,6 +12,7 @@
     margin-top: 10px;
     margin-right: 5px;
     margin-left: 25px;
+
     max-width: 360px;
     min-width: 360px;
     max-height: 128px;
@@ -19,5 +22,6 @@
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: left;
-    background-size: 360px 160px
+    background-size: 360px 160px;
+    text-shadow: 1px 1px rgba(0,0,0,100);
 }
