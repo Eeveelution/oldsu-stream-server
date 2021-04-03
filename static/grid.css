@@ -11,7 +11,7 @@
     grid-template-rows: 80px 100% 20%;
 }
 .container > div {
-    border: 1px dashed #888;
+    /*border: 1px dashed #888;*/
 }
 
 .logo-area-container {
@@ -45,22 +45,13 @@
 }
 
 .user-area {
-    border: 1px dashed #888;
+    display: flex;
     background-color: #252525;
     padding-left: 25px;
     padding-right: 15px;
-    padding-top: 30px;
+    padding-top: 15px;
     text-align: left;
-}
-
-.avatar {
-    border: 1px dashed #888;
-    margin-right: 750px;
-}
-
-.user-area-text {
-    border: 1px dashed #888;
-
+    align-items: center;
 }
 
 .content_container {
