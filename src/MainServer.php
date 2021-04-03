@@ -24,9 +24,6 @@ namespace oldsu_stream_server {
 		 */
 		public function __construct($location)
         {
-            //Include Necessary Files
-            require "GameServer/GameHandler.php";
-            require "WebsiteServer/WebsiteHandler.php";
             //Create worker and assign max Thread count to 4
             $this->http_worker = new Worker($location);
             $this->http_worker->count = 4;
@@ -52,9 +49,9 @@ namespace oldsu_stream_server {
 		{
             //Distinguish between Website and Game Server
             if(strpos($request->path(), "/stream") === 0){
-                GameServer\HandleRequest($connection, $request);
+                GameServer\GameHandler::HandleRequest($connection, $request);
             } else {
-                WebsiteHandler\HandleRequest($connection, $request);
+				WebsiteHandler\WebsiteHandler::HandleRequest($connection, $request);
             }
         }
     }
