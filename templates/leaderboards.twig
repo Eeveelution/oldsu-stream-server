@@ -9,24 +9,26 @@
     <title>oldsu!stream - Main Page</title>
 </head>
 <body>
-    <div class="container">
-        <div class="logo-area">
-            <b style="font-size: 24pt">oldsu!stream</b>
-        </div>
-        <div class="user-area">
-            {% if logged_in_user is defined %}
-                Welcome {{ logged_in_user }}!
-            {% endif %}
-        </div>
-        <div class="navbar">
-
-        </div>
-        <div class="content">
-
-        </div>
-        <div class="footer">
-            Made by Eevee in 2021
-        </div>
+<div class="container">
+    <div class="logo-area">
+        <b style="font-size: 24pt">oldsu!stream</b>
     </div>
+    <div class="user-area">
+        {% if logged_in_user is defined %}
+            Welcome {{ logged_in_user }}!
+        {% else %}
+            You are not logged in!
+        {% endif %}
+    </div>
+    <div class="navbar">
+
+    </div>
+    <div class="content">
+
+    </div>
+    <div class="footer">
+        Made by Eevee in 2021
+    </div>
+</div>
 </body>
 </html>

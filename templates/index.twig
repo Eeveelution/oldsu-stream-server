@@ -16,6 +16,8 @@
         <div class="user-area">
             {% if logged_in_user is defined %}
                 Welcome {{ logged_in_user }}!
+            {% else %}
+                You are not logged in!
             {% endif %}
         </div>
         <div class="navbar">
