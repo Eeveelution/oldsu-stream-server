@@ -16,9 +16,6 @@ class MapDownloadHandler
 	 */
     public static function Handle($connection, $request) : void
 	{
-		include_once __DIR__."/../Objects/MapPack.php";
-		include_once __DIR__."/../Objects/Beatmap.php";
-
 		$post = $request->post();
 
 		if(strpos($post["filename"], "./" !== false)){

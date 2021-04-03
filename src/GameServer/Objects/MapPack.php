@@ -22,8 +22,6 @@ class MapPack implements Writable
      */
     public function __construct($packid, $packname)
     {
-    	require_once "Beatmap.php";
-
         $this->packid = $packid;
         $this->packname = $packname;
     }

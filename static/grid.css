@@ -1,4 +1,5 @@
 .container {
+
     margin: auto;
     padding-left: 50px;
     display: grid;
@@ -18,19 +19,31 @@
     grid-area: logo-area;
     text-align: center;
     line-height: 500%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .user-area {
     grid-area: user-area;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .navbar {
     grid-area: navbar;
-    display: inline-block;
-    vertical-align: middle;
-    line-height: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .content {
     grid-area: content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .footer {
     grid-area: footer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

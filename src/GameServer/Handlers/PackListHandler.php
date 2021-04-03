@@ -17,8 +17,6 @@ class PackListHandler
 	 */
     public static function Handle($connection, $request) : void
 	{
-		require_once __DIR__."/../Objects/MapPack.php";
-
 		$return = "";
 		//Query all Beatmap Packs
 		$packIds = DB::query("SELECT LocalID FROM stream_packs");

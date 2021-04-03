@@ -13,10 +13,20 @@
         <div class="logo-area">
             <b style="font-size: 24pt">oldsu!stream</b>
         </div>
-        <div class="user-area">header-1</div>
-        <div class="navbar">left</div>
-        <div class="content">main</div>
-        <div class="footer">a-A6nB7</div>
+        <div class="user-area">
+            {% if logged_in_user is defined %}
+                Welcome {{ logged_in_user }}!
+            {% endif %}
+        </div>
+        <div class="navbar">
+
+        </div>
+        <div class="content">
+
+        </div>
+        <div class="footer">
+            Made by Eevee in 2021
+        </div>
     </div>
 </body>
 </html>

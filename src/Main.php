@@ -6,9 +6,20 @@ use Mimey\MimeTypes;
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../vendor/sergeytsalkov/meekrodb/db.class.php';
 
-require_once __DIR__ . '/MainServer.php';
-require_once __DIR__ . '/GameServer/Interfaces/Writable.php';
-require_once __DIR__ . '/GlobalVariables.php';
+function _require_all($dir, $depth=0) {
+	// require all php files
+	$scan = glob("$dir/*");
+	foreach ($scan as $path) {
+		if (preg_match('/\.php$/', $path)) {
+			require_once $path;
+		}
+		elseif (is_dir($path)) {
+			_require_all($path, $depth+1);
+		}
+	}
+}
+
+_require_all(__DIR__."/");
 
 Dotenv::createImmutable(__DIR__."/..")->load();
 //Make Warnings throw exceptions
