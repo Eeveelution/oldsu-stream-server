@@ -3,9 +3,10 @@
     background-color: #3b3b3b;
     width: 100%;
     padding-top: 5px;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     text-align: center;
     margin-top: 15px;
+    margin-bottom: 5px;
 }
 
 .pack_container {

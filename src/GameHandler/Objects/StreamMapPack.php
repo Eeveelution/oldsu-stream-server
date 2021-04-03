@@ -74,6 +74,7 @@ class StreamMapPack implements Writable
 			$databaseBeatmap = StreamBeatmap::FromDatabaseBySetId($beatmap);
 
 			$mappack->AddBeatmap($databaseBeatmap);
+			$mappack->AddBeatmap($databaseBeatmap);
 		}
 		return $mappack;
 	}
