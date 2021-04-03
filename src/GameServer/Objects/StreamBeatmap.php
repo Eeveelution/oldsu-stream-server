@@ -1,11 +1,13 @@
 <?php
 
 //Beatmap, used for Map Packs
-class Beatmap implements Writable
+use oldsu_stream_server\Helpers\StringParseHelpers;
+class StreamBeatmap implements Writable
 {
 	public string $revision;
 	public string $metadata;
 	public string $filename;
+	public string $creator;
 	/**
      * Beatmap constructor.
      *
@@ -17,6 +19,7 @@ class Beatmap implements Writable
         $this->filename = $filename;
         $this->metadata = $metadata;
         $this->revision = $revision;
+        $this->creator  = StringParseHelpers::GetCreatorFromFilename($this->filename);
     }
 	/**
 	 * Writes Beatmap to a String
@@ -34,9 +37,9 @@ class Beatmap implements Writable
 	 *
 	 * @param $id int Beatmap ID
 	 *
-	 * @return Beatmap Beatmap from Database
+	 * @return StreamBeatmap Beatmap from Database
 	 */
-    public static function FromDatabaseById(int $id) : Beatmap {
+    public static function FromDatabaseById(int $id) : StreamBeatmap {
     	//Query Map
 		$database_results = DB::queryOneRow("SELECT * FROM stream_beatmaps WHERE LocalID=%i", $id);
 		//Gather Results
@@ -44,14 +47,14 @@ class Beatmap implements Writable
 		$revision = $database_results["Revision"];
 		$metadata = $database_results["Metadata"];
 		//Return new Beatmap
-		return new Beatmap($filename, $metadata, $revision);
+		return new StreamBeatmap($filename, $metadata, $revision);
     }
 	/**
 	 * @param int $id Beatmap Set ID
 	 *
-	 * @return Beatmap Beatmap
+	 * @return StreamBeatmap Beatmap
 	 */
-	public static function FromDatabaseBySetId(int $id) : Beatmap {
+	public static function FromDatabaseBySetId(int $id) : StreamBeatmap {
 		//Query Map
 		$database_results = DB::queryOneRow("SELECT * FROM stream_beatmaps WHERE LocalBeatmapsetID=%i", $id);
 		//Gather Results
@@ -59,13 +62,13 @@ class Beatmap implements Writable
 		$revision = $database_results["Revision"];
 		$metadata = $database_results["Metadata"];
 		//Return new Beatmap
-		return new Beatmap($filename, $metadata, $revision);
+		return new StreamBeatmap($filename, $metadata, $revision);
 	}
 
 	/**
 	 * @param string $filename .osz2 Filename to Query by
 	 *
-	 * @return Beatmap[] Beatmap Array
+	 * @return StreamBeatmap[] Beatmap Array
 	 */
 	public static function FromDatabaseByFilename(string $filename) : array {
 		//Query Maps
@@ -79,7 +82,7 @@ class Beatmap implements Writable
 			$revision = $database_result["Revision"];
 			$metadata = $database_result["Metadata"];
 			//Append new Beatmap to list
-			$beatmaps[] = new Beatmap($filename, $metadata, $revision);
+			$beatmaps[] = new StreamBeatmap($filename, $metadata, $revision);
 		}
 		//Return Beatmaps
     	return $beatmaps;
@@ -89,9 +92,9 @@ class Beatmap implements Writable
 	 * @param string $filename Filename to Query by
 	 * @param int    $difficulty Difficulty of Map
 	 *
-	 * @return Beatmap
+	 * @return StreamBeatmap
 	 */
-	public static function FromDatabaseByFilenameDifficulty(string $filename, int $difficulty) : Beatmap {
+	public static function FromDatabaseByFilenameDifficulty(string $filename, int $difficulty) : StreamBeatmap {
 		//Query Map
 		$database_result  = DB::queryOneRow("SELECT * FROM stream_beatmaps WHERE Filename=%s AND Difficulty=%i", $filename, $difficulty);
 		//Gather Results
@@ -99,6 +102,6 @@ class Beatmap implements Writable
 		$revision = $database_result["Revision"];
 		$metadata = $database_result["Metadata"];
 		//Return new Beatmap
-		return new Beatmap($filename, $metadata, $revision);
+		return new StreamBeatmap($filename, $metadata, $revision);
 	}
 }

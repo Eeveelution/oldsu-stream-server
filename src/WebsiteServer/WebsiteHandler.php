@@ -48,6 +48,9 @@ class WebsiteHandler {
 			case "/index":
 				\IndexHandler::Handle($connection, $request);
 				break;
+			case "/beatmaps":
+				\BeatmapsHandler::Handle($connection, $request);
+				break;
 		}
 	}
 }

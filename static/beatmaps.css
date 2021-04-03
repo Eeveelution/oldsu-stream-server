@@ -1,0 +1,22 @@
+.pack_title {
+    background-color: #191a1c;
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+}
+
+.pack_container {
+    float: left;
+    margin-top: 10px;
+    margin-right: 5px;
+    margin-left: 25px;
+    max-width: 360px;
+    min-width: 360px;
+    max-height: 128px;
+    min-height: 128px;
+    background-color: #191a1c;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: left;
+}

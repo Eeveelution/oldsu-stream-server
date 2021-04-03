@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'shared/head.twig' %}
+
+    <title>oldsu!stream - Beatmap Packs</title>
+
+    <link rel="stylesheet" type="text/css" href="static/beatmaps.css"/>
+
+</head>
+<body>
+{% embed 'shared/layout.twig' %}
+    {% block content %}
+        {% for pack in packs %}
+            <div class="pack_title">
+                {{ pack.packname }}
+            </div>
+            {% for map in pack.beatmaps %}
+                <div class="pack_container">
+                    {{ map.metadata }}<br>
+                    Created by {{ map.creator }}
+                </div>
+                <div class="pack_container">
+                    {{ map.metadata }}<br>
+                    Created by {{ map.creator }}
+                </div>
+                <div class="pack_container">
+                    {{ map.metadata }}<br>
+                    Created by {{ map.creator }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endblock %}
+{% endembed %}
+</body>
+</html>

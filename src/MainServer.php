@@ -46,7 +46,9 @@ namespace oldsu_stream_server {
             //Distinguish between Website and Game Server
             if(strpos($request->path(), "/stream") === 0){
                 GameServer\GameHandler::HandleRequest($connection, $request);
-            } else {
+            } else if(strpos($request->path(), "/cdn") === 0){
+				GameServer\GameHandler::HandleRequest($connection, $request);
+			}else {
 				WebsiteHandler\WebsiteHandler::HandleRequest($connection, $request);
             }
         }

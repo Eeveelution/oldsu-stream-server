@@ -1,20 +1,20 @@
 <?php
 
 //Beatmap Pack, for list3.php
-class MapPack implements Writable
+class StreamMapPack implements Writable
 {
     /**
      * @var string Pack ID
      */
-	private string $packid;
+	public string $packid;
     /**
      * @var string Pack Name
      */
-	private string $packname;
+	public string $packname;
     /**
-     * @var Beatmap[] Beatmap Array
+     * @var StreamBeatmap[] Beatmap Array
      */
-	private array $beatmaps = array();
+	public array $beatmaps = array();
     /**
      * MapPack constructor.
      * @param $packid string Pack ID
@@ -26,9 +26,9 @@ class MapPack implements Writable
         $this->packname = $packname;
     }
 	/**
-	 * @param $beatmap Beatmap Beatmap which is supposed to be added to this pack
+	 * @param $beatmap StreamBeatmap Beatmap which is supposed to be added to this pack
 	 */
-    public function AddBeatmap(Beatmap $beatmap) : void {
+    public function AddBeatmap(StreamBeatmap $beatmap) : void {
         //Append
         $this->beatmaps[] = $beatmap;
     }
@@ -56,9 +56,9 @@ class MapPack implements Writable
 	/**
 	 * @param int $id Pack LocalID
 	 *
-	 * @return MapPack
+	 * @return StreamMapPack
 	 */
-	public static function GetPackById(int $id) : MapPack {
+	public static function GetPackById(int $id) : StreamMapPack {
 		//Query Database
 		$results = DB::queryOneRow("SELECT * FROM stream_packs WHERE LocalID=%s", $id);
 
@@ -66,12 +66,12 @@ class MapPack implements Writable
 		$packId = $results["PackID"];
 		$beatmaps = $results["Beatmaps"];
 
-		$mappack = new MapPack($packId, $packname);
+		$mappack = new StreamMapPack($packId, $packname);
 
 		$split_beatmaps = explode(";", $beatmaps);
 
 		foreach($split_beatmaps as $beatmap){
-			$databaseBeatmap = Beatmap::FromDatabaseBySetId($beatmap);
+			$databaseBeatmap = StreamBeatmap::FromDatabaseBySetId($beatmap);
 
 			$mappack->AddBeatmap($databaseBeatmap);
 		}
@@ -80,9 +80,9 @@ class MapPack implements Writable
 	/**
 	 * @param string $id Pack PackID
 	 *
-	 * @return MapPack
+	 * @return StreamMapPack
 	 */
-	public static function GetPackByPackId(string $id) : MapPack {
+	public static function GetPackByPackId(string $id) : StreamMapPack {
 		//Query Database
 		$results = DB::queryOneRow("SELECT * FROM stream_packs WHERE PackID=%s", $id);
 
@@ -90,12 +90,12 @@ class MapPack implements Writable
 		$packId = $results["PackID"];
 		$beatmaps = $results["Beatmaps"];
 
-		$mappack = new MapPack($packId, $packname);
+		$mappack = new StreamMapPack($packId, $packname);
 
 		$split_beatmaps = explode(";", $beatmaps);
 
 		foreach($split_beatmaps as $beatmap){
-			$databaseBeatmap = Beatmap::FromDatabaseBySetId($beatmap);
+			$databaseBeatmap = StreamBeatmap::FromDatabaseBySetId($beatmap);
 
 			$mappack->AddBeatmap($databaseBeatmap);
 		}
@@ -104,9 +104,9 @@ class MapPack implements Writable
 	/**
 	 * @param string $filename Map Filename
 	 *
-	 * @return Beatmap|null Map in pack with filename `$filename`
+	 * @return StreamBeatmap|null Map in pack with filename `$filename`
 	 */
-	public function GetMapByFilename(string $filename) : ?Beatmap {
+	public function GetMapByFilename(string $filename) : ?StreamBeatmap {
 		foreach($this->beatmaps as $beatmap){
 			if($beatmap->filename === $filename){
 				return $beatmap;

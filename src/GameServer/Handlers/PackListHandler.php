@@ -5,7 +5,7 @@ namespace oldsu_stream_server\GameServer\Handlers;
 use Workerman\Connection\TcpConnection;
 use Workerman\Protocols\Http\Request;
 use DB;
-use MapPack;
+use StreamMapPack;
 
 class PackListHandler
 {
@@ -23,7 +23,7 @@ class PackListHandler
 		//Go through all packIds and Write
 		foreach($packIds as $id){
 			//Query and Write Pack
-			$pack = MapPack::GetPackById($id["LocalID"]);
+			$pack = StreamMapPack::GetPackById($id["LocalID"]);
 			//Write
 			$return .= $pack->Write();
 		}
