@@ -18,9 +18,9 @@ class GameHandler {
 	 * Handles Requests to the Game Server
 	 *
 	 * @param TcpConnection $connection
-	 * @param Request $request
+	 * @param Request       $request
 	 */
-	public static function HandleRequest($connection, $request) : void {
+	public static function HandleRequest(TcpConnection $connection, Request $request) : void {
 		echo "got request on " . $request->path() . "\n";
 
 		//Switch Path and route request

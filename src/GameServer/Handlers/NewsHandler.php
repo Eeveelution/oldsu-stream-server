@@ -13,7 +13,7 @@ class NewsHandler
 	 * @param $connection TcpConnection
 	 * @param $request Request
 	 */
-    public static function Handle($connection, $request) : void
+    public static function Handle(TcpConnection $connection, Request $request) : void
 	{
         //Return Server Date
         $connection->send(date("Y-m-d"));

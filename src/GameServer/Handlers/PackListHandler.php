@@ -15,7 +15,7 @@ class PackListHandler
 	 * @param $connection TcpConnection Connection
 	 * @param $request Request Request
 	 */
-    public static function Handle($connection, $request) : void
+    public static function Handle(TcpConnection $connection, Request $request) : void
 	{
 		$return = "";
 		//Query all Beatmap Packs

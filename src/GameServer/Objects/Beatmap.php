@@ -13,7 +13,7 @@ class Beatmap implements Writable
      * @param $metadata string Map Metadata (Artist - Title)
      * @param $revision string Map Revision (1.0)
      */
-    public function __construct($filename, $metadata, $revision) {
+    public function __construct(string $filename, string $metadata, string $revision) {
         $this->filename = $filename;
         $this->metadata = $metadata;
         $this->revision = $revision;
@@ -36,7 +36,7 @@ class Beatmap implements Writable
 	 *
 	 * @return Beatmap Beatmap from Database
 	 */
-    public static function FromDatabaseById($id) : Beatmap {
+    public static function FromDatabaseById(int $id) : Beatmap {
     	//Query Map
 		$database_results = DB::queryOneRow("SELECT * FROM stream_beatmaps WHERE LocalID=%i", $id);
 		//Gather Results
@@ -51,7 +51,7 @@ class Beatmap implements Writable
 	 *
 	 * @return Beatmap Beatmap
 	 */
-	public static function FromDatabaseBySetId($id) : Beatmap {
+	public static function FromDatabaseBySetId(int $id) : Beatmap {
 		//Query Map
 		$database_results = DB::queryOneRow("SELECT * FROM stream_beatmaps WHERE LocalBeatmapsetID=%i", $id);
 		//Gather Results
@@ -67,7 +67,7 @@ class Beatmap implements Writable
 	 *
 	 * @return Beatmap[] Beatmap Array
 	 */
-	public static function FromDatabaseByFilename($filename) : array {
+	public static function FromDatabaseByFilename(string $filename) : array {
 		//Query Maps
     	$database_results = DB::query("SELECT * FROM stream_beatmaps WHERE Filename=%s", $filename);
 		//Beatmap Array
@@ -87,11 +87,11 @@ class Beatmap implements Writable
 
 	/**
 	 * @param string $filename Filename to Query by
-	 * @param int $difficulty Difficulty of Map
+	 * @param int    $difficulty Difficulty of Map
 	 *
 	 * @return Beatmap
 	 */
-	public static function FromDatabaseByFilenameDifficulty($filename, $difficulty) : Beatmap {
+	public static function FromDatabaseByFilenameDifficulty(string $filename, int $difficulty) : Beatmap {
 		//Query Map
 		$database_result  = DB::queryOneRow("SELECT * FROM stream_beatmaps WHERE Filename=%s AND Difficulty=%i", $filename, $difficulty);
 		//Gather Results

@@ -42,5 +42,5 @@ GlobalVariables::$twig = new Twig\Environment(GlobalVariables::$loader);
 GlobalVariables::$mimes = new MimeTypes();
 //Create and Start MainServer
 $server = new oldsu_stream_server\MainServer($_ENV["SERVER_LOCATION"]);
-$server->start();
+$server->Start();
 

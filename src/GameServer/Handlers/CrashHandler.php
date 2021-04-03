@@ -10,11 +10,11 @@ class CrashHandler
 	/**
 	 * Handles the Request
 	 *
-	 * @param $connection TcpConnection
-	 * @param $request Request
+	 * @param TcpConnection $connection
+	 * @param Request       $request
 	 */
-	public static function Handle($connection, $request) : void
+	public static function Handle(TcpConnection $connection, Request $request) : void
 	{
 
-    }
+	}
 }

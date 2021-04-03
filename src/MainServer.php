@@ -1,7 +1,5 @@
 <?php
 
-
-
 namespace oldsu_stream_server {
 
     use Workerman\Worker;
@@ -15,14 +13,12 @@ namespace oldsu_stream_server {
     {
         //HTTP Worker, Accepts all requests
 		private Worker $http_worker;
-        //
-
 		/**
 		 * Constructor, Takes in a Location on where to run the MainServer
 		 *
 		 * @param string $location Where to run the Server
 		 */
-		public function __construct($location)
+		public function __construct(string $location)
         {
             //Create worker and assign max Thread count to 4
             $this->http_worker = new Worker($location);
@@ -36,16 +32,16 @@ namespace oldsu_stream_server {
 		/**
 		 * Is responsible for starting the GameServer
 		 */
-		public function start() : void {
+		public function Start() : void {
             Worker::runAll();
         }
-
 		/**
 		 * Handles incoming requests
+		 *
 		 * @param $connection TcpConnection
 		 * @param $request Request
 		 */
-		private function onMessage($connection, $request) : void
+		private function onMessage(TcpConnection $connection, Request $request) : void
 		{
             //Distinguish between Website and Game Server
             if(strpos($request->path(), "/stream") === 0){

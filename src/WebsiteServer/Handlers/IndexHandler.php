@@ -7,9 +7,9 @@ use Workerman\Protocols\Http\Response;
 class IndexHandler {
 	/**
 	 * @param TcpConnection $connection
-	 * @param Request $request
+	 * @param Request       $request
 	 */
-	public static function Handle($connection, $request) : void {
+	public static function Handle(TcpConnection $connection, Request $request) : void {
 		try {
 			$html = GlobalVariables::$twig->render('index.twig');
 			$response = new Response(200, [], $html);

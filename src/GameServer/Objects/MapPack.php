@@ -20,19 +20,15 @@ class MapPack implements Writable
      * @param $packid string Pack ID
      * @param $packname string Pack Name (shows up in osu!stream)
      */
-    public function __construct($packid, $packname)
+    public function __construct(string $packid, string $packname)
     {
         $this->packid = $packid;
         $this->packname = $packname;
     }
-    /**
-     * @param $beatmap Beatmap Beatmap which is supposed to be added to this pack
-     */
-    public function AddBeatmap($beatmap) : void {
-    	//Type Check
-        if(!$beatmap instanceof \Beatmap){
-            trigger_error("What you are trying to add isn't a Beatmap!", E_USER_ERROR);
-        }
+	/**
+	 * @param $beatmap Beatmap Beatmap which is supposed to be added to this pack
+	 */
+    public function AddBeatmap(Beatmap $beatmap) : void {
         //Append
         $this->beatmaps[] = $beatmap;
     }
@@ -57,8 +53,12 @@ class MapPack implements Writable
 		//Return Written String
         return $return_string;
     }
-
-    public static function GetPackById($id) : MapPack {
+	/**
+	 * @param int $id Pack LocalID
+	 *
+	 * @return MapPack
+	 */
+	public static function GetPackById(int $id) : MapPack {
 		//Query Database
 		$results = DB::queryOneRow("SELECT * FROM stream_packs WHERE LocalID=%s", $id);
 
@@ -77,8 +77,12 @@ class MapPack implements Writable
 		}
 		return $mappack;
 	}
-
-	public static function GetPackByPackId($id) : MapPack {
+	/**
+	 * @param string $id Pack PackID
+	 *
+	 * @return MapPack
+	 */
+	public static function GetPackByPackId(string $id) : MapPack {
 		//Query Database
 		$results = DB::queryOneRow("SELECT * FROM stream_packs WHERE PackID=%s", $id);
 
@@ -97,8 +101,12 @@ class MapPack implements Writable
 		}
 		return $mappack;
 	}
-
-	public function GetMapByFilename($filename) : ?Beatmap {
+	/**
+	 * @param string $filename Map Filename
+	 *
+	 * @return Beatmap|null Map in pack with filename `$filename`
+	 */
+	public function GetMapByFilename(string $filename) : ?Beatmap {
 		foreach($this->beatmaps as $beatmap){
 			if($beatmap->filename === $filename){
 				return $beatmap;

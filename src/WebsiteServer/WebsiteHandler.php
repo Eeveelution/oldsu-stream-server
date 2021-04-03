@@ -14,7 +14,7 @@ class WebsiteHandler {
 	 * @param TcpConnection $connection
 	 * @param Request       $request
 	 */
-	public static function HandleRequest($connection, $request) : void {
+	public static function HandleRequest(TcpConnection $connection, Request $request) : void {
 		echo "got request on " . $request->path() . "\n";
 		//Handles Static Content
 		if (strpos($request->path(), "/static") === 0) {
