@@ -28,7 +28,6 @@ class PackListHandler
 			$return .= $pack->Write();
 		}
 		//Send
-		echo $return;
 		$connection->send($return);
     }
 }
