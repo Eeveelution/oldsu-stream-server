@@ -1,6 +1,32 @@
 .leaderboard_table {
     font-size: 12pt;
     table-layout: fixed;
+    border: none;
+}
+
+tr {
+    border: none;
+}
+
+tr:hover {
+    background-color: #373737;
+
+}
+
+td {
+    border: none;
+}
+
+th {
+    border: none;
+}
+
+a {
+    cursor: pointer;
+}
+
+a:hover {
+    color: lightblue;
 }
 
 .rank {

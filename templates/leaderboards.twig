@@ -11,7 +11,7 @@
 <body>
 {% embed 'shared/layout.twig' %}
     {% block content %}
-        <table style="width: 100%" class="leaderboard_table">
+        <table style="width: 100%" class="leaderboard_table" cellspacing="0" cellpadding="2">
             <tr>
                 <th class="rank">Rank</th>
                 <th class="username">Username</th>
@@ -25,7 +25,7 @@
             {% for user in users %}
                 <tr>
                     <th>{{ user.rank }}</th>
-                    <th>{{ user.username }}</th>
+                    <th><a href="users/{{ user.userId }}">{{ user.username }}</a></th>
                     <th>{{ user.accuracy }}</th>
                     <th>{{ user.playcount }}</th>
                     <th>{{ user.rankedScore }}</th>
