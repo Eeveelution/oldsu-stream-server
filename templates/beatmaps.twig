@@ -16,11 +16,18 @@
                 {{ pack.packname }}
             </div>
             {% for map in pack.beatmaps %}
-                <div class="pack_container" style="background-image: url('cdn/thumbnails/{{ map.beatmap_id }}'); ">
-                    {{ map.metadata }}<br>
-                    Created by {{ map.creator }}
-                </div>
+                <a href="mapset/{{ map.beatmap_id }}">
+                    <div class="pack_container" style="background-image: url('cdn/thumbnails/{{ map.beatmap_id }}'); ">
+                        {{ map.metadata }}<br>
+                        Created by {{ map.creator }}
+                    </div>
+                </a>
             {% endfor %}
+            <a href="cdn/packs/{{ pack.packid }}">
+                <div class="pack_download">
+                    Download {{ pack.packname }}
+                </div>
+            </a>
         {% endfor %}
     {% endblock %}
 {% endembed %}

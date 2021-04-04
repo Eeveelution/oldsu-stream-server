@@ -9,6 +9,21 @@
     margin-bottom: 5px;
 }
 
+.pack_download {
+    float: left;
+    background-color: #24b000;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.pack_download:hover {
+    background-color: #2ad900;
+}
+
 .pack_container {
     float: left;
     margin-top: 10px;
@@ -26,4 +41,9 @@
     text-align: left;
     background-size: 360px 160px;
     text-shadow: 1px 1px rgba(0,0,0,100);
+}
+
+.pack_container:hover {
+    -webkit-filter: brightness(1.2);
+    filter: brightness(1.2);
 }

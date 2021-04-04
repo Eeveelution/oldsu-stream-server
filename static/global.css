@@ -31,3 +31,26 @@ li a:hover {
 .fixed_size_text {
      overflow: scroll !important;
 }
+
+a {
+     color: white;
+     cursor:default;
+     text-decoration: none;
+     border: 0 none;
+}
+
+a:link {
+     text-decoration: none;
+}
+
+a:visited {
+     text-decoration: none;
+}
+
+a:hover {
+     text-decoration: none;
+}
+
+a:active {
+     text-decoration: none;
+}
