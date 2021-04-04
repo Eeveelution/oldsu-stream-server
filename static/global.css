@@ -4,29 +4,6 @@ body {
      font-family: 'Exo 2', sans-serif;
 }
 
-ul {
-     list-style-type: none;
-     margin: 25px;
-     padding: 0;
-     width: 280px;
-}
-
-li a {
-     display: block;
-     color: white;
-     padding: 16px 16px;
-     margin-bottom: 15px;
-     text-decoration: none;
-     background-color: #373737;
-     text-align: center;
-     font-size: 16pt;
-}
-
-/* Change the link color on hover */
-li a:hover {
-     background-color: #555;
-     color: white;
-}
 
 .fixed_size_text {
      overflow: scroll !important;

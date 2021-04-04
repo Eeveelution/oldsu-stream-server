@@ -1,16 +1,51 @@
 {% block navbar %}
 
 <div class="navbar">
-    <ul>
-        <li><a href="leaderboards">Leaderboards</a></li>
-        <li><a href="beatmaps">Beatmaps</a></li>
-        <li><a href="download">Download</a></li>
-        <li><a href="mapsubmit">Map Submissions</a></li>
-        <li><a href="info">Information</a></li>
-        <li><br><br><br><br></li>
+    <style scoped>
+        .navbar {
+            background-color: #252525;
+            margin: 15px 5px 15px 10px;
+            grid-area: navbar;
+            justify-content: center;
+            padding-left: 5px;
+        }
 
-        <li><a href="login">Log In</a></li>
-        <li><a href="register">Register</a></li>
+        ul {
+            list-style-type: none;
+            margin: 25px;
+            padding: 0;
+            width: 280px;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            padding: 16px 16px;
+            margin-bottom: 15px;
+            text-decoration: none;
+            background-color: #373737;
+            text-align: center;
+            font-size: 16pt;
+        }
+
+        /* Change the link color on hover */
+        li a:hover {
+            background-color: #555;
+            color: white;
+            cursor: pointer
+        }
+    </style>
+
+    <ul class="navbar">
+        <li class="navbar"><a href="leaderboards">Leaderboards</a></li>
+        <li class="navbar"><a href="beatmaps">Beatmaps</a></li>
+        <li class="navbar"><a href="download">Download</a></li>
+        <li class="navbar"><a href="mapsubmit">Map Submissions</a></li>
+        <li class="navbar"><a href="info">Information</a></li>
+        <li class="navbar"><br><br><br><br></li>
+
+        <li class="navbar"><a href="login">Log In</a></li>
+        <li class="navbar"><a href="register">Register</a></li>
     </ul>
 </div>
 

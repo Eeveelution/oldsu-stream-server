@@ -7,6 +7,9 @@ use Workerman\Protocols\Http\Request;
 use Exception;
 use Workerman\Protocols\Http;
 
+use oldsu_stream_server\WebsiteHandler\Handlers\IndexHandler;
+use oldsu_stream_server\WebsiteHandler\Handlers\BeatmapsHandler;
+
 class WebsiteHandler {
 	/**
 	 * Handles Requests to the Main Website
@@ -46,10 +49,10 @@ class WebsiteHandler {
 			case "/":
 			case "/index.html":
 			case "/index":
-				\IndexHandler::Handle($connection, $request);
+				IndexHandler::Handle($connection, $request);
 				break;
 			case "/beatmaps":
-				\BeatmapsHandler::Handle($connection, $request);
+				BeatmapsHandler::Handle($connection, $request);
 				break;
 		}
 	}
