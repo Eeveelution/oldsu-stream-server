@@ -20,7 +20,7 @@ class WebsiteHandler {
 	public static function HandleRequest(TcpConnection $connection, Request $request) : void {
 		echo "got request on " . $request->path() . "\n";
 		//Handles Static Content
-		if (strpos($request->path(), "/static") === 0) {
+		if (str_starts_with($request->path(), "/static")) {
 			try {
 				//Gets File path and Path Information
 				$filepath = getcwd() . "/.." . $request->path();

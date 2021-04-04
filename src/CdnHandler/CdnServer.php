@@ -14,7 +14,7 @@ class CdnServer {
 	 * @param Request       $request
 	 */
 	public static function HandleRequest(TcpConnection $connection, Request $request) : void {
-		if(strpos($request->path(), "/cdn/thumbnails") === 0){
+		if(str_starts_with($request->path(), "/cdn/thumbnails")){
 			Thumbnails::HandleRequest($connection, $request);
 		}
 	}
