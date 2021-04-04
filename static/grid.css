@@ -57,7 +57,7 @@
 .content_container {
     display: block;
     overflow: auto;
-    max-height: 620px;
+    max-height: 610px;
     background-color: #252525;
     padding-left: 10px;
     margin-left: 10px;

@@ -1,5 +1,7 @@
 <?php
 
+
+
 namespace oldsu_stream_server\WebsiteHandler;
 
 use Workerman\Connection\TcpConnection;
@@ -11,6 +13,8 @@ use oldsu_stream_server\WebsiteHandler\Handlers\IndexHandler;
 use oldsu_stream_server\WebsiteHandler\Handlers\BeatmapsHandler;
 use oldsu_stream_server\WebsiteHandler\Handlers\LeaderboardsHandler;
 
+define("BASE_DIR", realpath(getcwd() . '/../static'));
+
 class WebsiteHandler {
 	/**
 	 * Handles Requests to the Main Website
@@ -20,11 +24,20 @@ class WebsiteHandler {
 	 */
 	public static function HandleRequest(TcpConnection $connection, Request $request) : void {
 		echo "got request on " . $request->path() . "\n";
+
 		//Handles Static Content
 		if (str_starts_with($request->path(), "/static")) {
 			try {
 				//Gets File path and Path Information
 				$filepath = getcwd() . "/.." . $request->path();
+				//Getting real path
+				$realpath = realpath($filepath);
+				//Checking for Directory traversal
+				if (!str_starts_with($realpath, BASE_DIR)) {
+					$connection->send("fuck off");
+					return;
+				}
+
 				$pathinfo = pathinfo($filepath);
 				//Loads in File
 				$html = file_get_contents($filepath);
