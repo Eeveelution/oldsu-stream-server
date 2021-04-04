@@ -1,6 +1,10 @@
-INSERT INTO stream_beatmaps (Filename, Revision, RankedStatus, Difficulty, LocalBeatmapsetID) VALUES ("Masayuki Suzuki - DADDY! DADDY! DO! feat. Airi Suzuki - TV Size (Eevee).osz2", "1.0", "Ranked", 1, 1);
-INSERT INTO stream_beatmaps (Filename, Revision, RankedStatus, Difficulty, LocalBeatmapsetID) VALUES ("Masayuki Suzuki - DADDY! DADDY! DO! feat. Airi Suzuki - TV Size (Eevee).osz2", "1.0", "Ranked", 2, 1);
-INSERT INTO stream_beatmaps (Filename, Revision, RankedStatus, Difficulty, LocalBeatmapsetID) VALUES ("Masayuki Suzuki - DADDY! DADDY! DO! feat. Airi Suzuki - TV Size (Eevee).osz2", "1.0", "Ranked", 3, 1);
-INSERT INTO stream_beatmaps (Filename, Revision, RankedStatus, Difficulty, LocalBeatmapsetID) VALUES ("Masayuki Suzuki - DADDY! DADDY! DO! feat. Airi Suzuki - TV Size (Eevee).osz2", "1.0", "Ranked", 4, 1);
+INSERT INTO stream_beatmaps (Filename, Revision, RankedStatus, Difficulty, LocalBeatmapsetID, Metadata) VALUES ('Masayuki Suzuki - DADDY! DADDY! DO! feat. Airi Suzuki - TV Size (Eevee).osz2', '1.0', 'Ranked', 1, 1, 'Masayuki Suzuki - DADDY! DADDY! DO! feat. Airi Suzuki - TV Size');
+INSERT INTO stream_beatmaps (Filename, Revision, RankedStatus, Difficulty, LocalBeatmapsetID, Metadata) VALUES ('Masayuki Suzuki - DADDY! DADDY! DO! feat. Airi Suzuki - TV Size (Eevee).osz2', '1.0', 'Ranked', 2, 1, 'Masayuki Suzuki - DADDY! DADDY! DO! feat. Airi Suzuki - TV Size');
+INSERT INTO stream_beatmaps (Filename, Revision, RankedStatus, Difficulty, LocalBeatmapsetID, Metadata) VALUES ('Masayuki Suzuki - DADDY! DADDY! DO! feat. Airi Suzuki - TV Size (Eevee).osz2', '1.0', 'Ranked', 3, 1, 'Masayuki Suzuki - DADDY! DADDY! DO! feat. Airi Suzuki - TV Size');
+INSERT INTO stream_beatmaps (Filename, Revision, RankedStatus, Difficulty, LocalBeatmapsetID, Metadata) VALUES ('Masayuki Suzuki - DADDY! DADDY! DO! feat. Airi Suzuki - TV Size (Eevee).osz2', '1.0', 'Ranked', 4, 1, 'Masayuki Suzuki - DADDY! DADDY! DO! feat. Airi Suzuki - TV Size');
 
-INSERT INTO stream_packs (PackID, PackName, Beatmaps) VALUES ("EeveePack", "Eevee's Anime Pack", "1");
+INSERT INTO stream_packs (PackID, PackName, Beatmaps) VALUES ('EeveePack', 'Eevee''s Anime Pack', '1');
+
+INSERT INTO stream_stats (UserID, Username, RankedScore, Accuracy, Playcount, CountSSH, CountSS, CountSH, CountS, CountA, CountB, CountC, CountD, Acc300, Acc100, Acc50, AccMiss) VALUES (24, 'Eevee', 1231232, 93.22, 123, 324, 435,12,43,1,23,12,6,123,234,345,4566);
+INSERT INTO stream_stats (UserID, Username, RankedScore, Accuracy, Playcount, CountSSH, CountSS, CountSH, CountS, CountA, CountB, CountC, CountD, Acc300, Acc100, Acc50, AccMiss) VALUES (25, 'Suzu', 12837129, 99.22, 113, 123, 12387,1098237,9812732,81273,81273,9834,981273,84325,81273,874325,2734);
+INSERT INTO stream_stats (UserID, Username, RankedScore, Accuracy, Playcount, CountSSH, CountSS, CountSH, CountS, CountA, CountB, CountC, CountD, Acc300, Acc100, Acc50, AccMiss) VALUES (25, 'AAAAAAAAAAAAAAAAAAAAAAAAA', 2147483648, 100.0, 113, 99999, 0,9999,0,99999,81273,9834,981273,84325,81273,874325,2734);

@@ -3,13 +3,39 @@
 <head>
     {% include 'shared/head.twig' %}
 
+    <link rel="stylesheet" href="static/leaderboards.css"
+
     <title>oldsu!stream - Beatmap Packs</title>
 
 </head>
 <body>
 {% embed 'shared/layout.twig' %}
     {% block content %}
+        <table style="width: 100%" class="leaderboard_table">
+            <tr>
+                <th class="rank">Rank</th>
+                <th class="username">Username</th>
+                <th class="accuracy">Accuracy</th>
+                <th class="playcount">Playcount</th>
+                <th class="score">Ranked Score</th>
+                <th class="countss">SS</th>
+                <th class="counts">S</th>
+                <th class="counta">A</th>
+            </tr>
+            {% for user in users %}
+                <tr>
+                    <th>{{ user.rank }}</th>
+                    <th>{{ user.username }}</th>
+                    <th>{{ user.accuracy }}</th>
+                    <th>{{ user.playcount }}</th>
+                    <th>{{ user.rankedScore }}</th>
+                    <th>{{ user.countSSH + user.countSS }}</th>
+                    <th>{{ user.countS + user.CountSH }}</th>
+                    <th>{{ user.countA }}</th>
+                </tr>
+            {% endfor %}
 
+        </table>
     {% endblock %}
 {% endembed %}
 </body>

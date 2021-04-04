@@ -9,6 +9,7 @@ use Workerman\Protocols\Http;
 
 use oldsu_stream_server\WebsiteHandler\Handlers\IndexHandler;
 use oldsu_stream_server\WebsiteHandler\Handlers\BeatmapsHandler;
+use oldsu_stream_server\WebsiteHandler\Handlers\LeaderboardsHandler;
 
 class WebsiteHandler {
 	/**
@@ -53,6 +54,9 @@ class WebsiteHandler {
 				break;
 			case "/beatmaps":
 				BeatmapsHandler::Handle($connection, $request);
+				break;
+			case "/leaderboards":
+				LeaderboardsHandler::Handle($connection, $request);
 				break;
 		}
 	}
