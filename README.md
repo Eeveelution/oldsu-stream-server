@@ -10,6 +10,12 @@ After having written a [osu!2007 Server](https://github.com/Eeveelution/Eevee-os
 And so far I have to say that the Language (PHP 8.0 Specifically) is very comfortable to use.<br>
 Since PHP 7 Added Type annotations, and PHPDoc existing, it's a fairly comfortable language to use for any project.
 
+# Requirements
+*   A PHP 8.0 Environment (Tested working on 8.0.3)
+*   Composer for PHP (Tested working on Composer 2)
+*   A MySQL Database (Tested working on MySQL Version 15.1 : MariaDB 10.4.18)
+
+
 # Usage
 This server isn't specifically made for running manually, <br>
 because it uses private oldsu! SQL queries. (Mainly for login) <br>
