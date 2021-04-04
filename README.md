@@ -3,11 +3,11 @@
 </p>
 
 # oldsu!stream Server
-A server specifically made for osu!stream (oldsu!stream, modified) written in PHP 7.4
+A server specifically made for osu!stream (oldsu!stream, modified) written in PHP 8.0
 <br><br>
 I mainly chose PHP for this Project to familliarize myself with PHP again, <br>
 After having written a [osu!2007 Server](https://github.com/Eeveelution/Eevee-osuserver) in it over half a year ago (as of the time that I'm writing this, look at the code at your own risk.)<br>
-And so far I have to say that the Language (PHP 7.4 Specifically) is very comfortable to use.<br>
+And so far I have to say that the Language (PHP 8.0 Specifically) is very comfortable to use.<br>
 Since PHP 7 Added Type annotations, and PHPDoc existing, it's a fairly comfortable language to use for any project.
 
 # Usage
