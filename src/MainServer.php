@@ -45,11 +45,16 @@ namespace oldsu_stream_server {
 		private function onMessage(TcpConnection $connection, Request $request) : void
 		{
             //Distinguish between Website and Game Server
-            if(str_starts_with($request->path(), "/stream")){
+            if( str_starts_with($request->path(), "/stream/dl") ||
+				str_starts_with($request->path(), "/stream/score") ||
+				str_starts_with($request->path(), "/stream/admin")
+			){
                 GameServer\GameHandler::HandleRequest($connection, $request);
-            } else if(str_starts_with($request->path(), "/cdn")){
+            }
+            else if(str_starts_with($request->path(), "/cdn")){
 				CdnServer::HandleRequest($connection, $request);
-			}else {
+			}
+            else {
 				WebsiteHandler\WebsiteHandler::HandleRequest($connection, $request);
             }
         }

@@ -12,8 +12,9 @@ use Exception;
 class LeaderboardsHandler {
 	public static function Handle(TcpConnection $connection, Request $request) : void {
 		$users = array();
-		$userIdResults = DB::query("SELECT * FROM (SELECT *, ROW_NUMBER() OVER (ORDER BY RankedScore DESC) AS 'Rank' FROM stream_stats ) t");
-
+		//Query Database
+		$userIdResults = DB::query("SELECT * FROM (SELECT *, ROW_NUMBER() OVER (ORDER BY RankedScore DESC) AS 'Rank' FROM users ) t");
+		//Go Over Results
 		foreach ($userIdResults as $result){
 			$user = new StreamUser();
 
@@ -39,9 +40,10 @@ class LeaderboardsHandler {
 			$users[] = $user;
 		}
 		try {
+			//Render Webpage with $users as Parameter
 			$html = \GlobalVariables::$twig->render('leaderboards.twig', ["users" => $users]);
 			$response = new Response(200, [], $html);
-
+			//Send Off
 			$connection->send($response);
 		}catch(Exception $e){
 			echo $e;

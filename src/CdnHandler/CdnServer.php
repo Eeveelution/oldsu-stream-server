@@ -14,6 +14,7 @@ class CdnServer {
 	 * @param Request       $request
 	 */
 	public static function HandleRequest(TcpConnection $connection, Request $request) : void {
+		//Route Thumbnail Requests
 		if(str_starts_with($request->path(), "/cdn/thumbnails")){
 			Thumbnails::HandleRequest($connection, $request);
 		}

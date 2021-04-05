@@ -28,7 +28,7 @@ class WebsiteHandler {
 		//Handles Static Content
 		if (str_starts_with($request->path(), "/static")) {
 			try {
-				//Gets File path and Path Information
+				//Gets File path
 				$filepath = getcwd() . "/.." . $request->path();
 				//Getting real path
 				$realpath = realpath($filepath);
@@ -37,7 +37,7 @@ class WebsiteHandler {
 					$connection->send("fuck off");
 					return;
 				}
-
+				//Get Path Information
 				$pathinfo = pathinfo($filepath);
 				//Loads in File
 				$html = file_get_contents($filepath);

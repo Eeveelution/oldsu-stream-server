@@ -21,9 +21,10 @@ class BeatmapsHandler {
 			$maps[] = StreamMapPack::GetPackById($id["LocalID"]);
 		}
 		try {
+			//Render Page with $maps as Parameter
 			$html = GlobalVariables::$twig->render('beatmaps.twig', ["packs" => $maps]);
 			$response = new Response(200, [], $html);
-
+			//Send off
 			$connection->send($response);
 		}catch(Exception $e){
 			echo $e;

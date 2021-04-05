@@ -15,6 +15,7 @@ class IndexHandler {
 	 */
 	public static function Handle(TcpConnection $connection, Request $request) : void {
 		try {
+			//Just Render
 			$html = GlobalVariables::$twig->render('index.twig');
 			$response = new Response(200, [], $html);
 
