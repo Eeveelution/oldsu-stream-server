@@ -3,60 +3,45 @@
     table-layout: fixed;
     border: none;
 }
-
 tr {
     border: none;
 }
-
 tr:hover {
     background-color: #373737;
-
 }
-
 td {
     border: none;
 }
-
 th {
     border: none;
 }
-
 a {
     cursor: pointer;
 }
-
 a:hover {
     color: lightblue;
 }
-
 .rank {
     width: 50px;
 }
-
 .username {
     width: 260px;
 }
-
 .accuracy {
     width: 75px;
 }
-
 .playcount {
     width: 80px;
 }
-
 .score {
     width: 110px;
 }
-
 .countss {
     width: 55px;
 }
-
 .counts {
     width: 55px;
 }
-
 .counta {
     width: 55px;
 }

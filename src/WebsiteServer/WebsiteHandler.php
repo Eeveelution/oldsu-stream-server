@@ -12,6 +12,7 @@ use Workerman\Protocols\Http;
 use oldsu_stream_server\WebsiteHandler\Handlers\IndexHandler;
 use oldsu_stream_server\WebsiteHandler\Handlers\BeatmapsHandler;
 use oldsu_stream_server\WebsiteHandler\Handlers\LeaderboardsHandler;
+use oldsu_stream_server\WebsiteHandler\Handlers\MapsetHandler;
 
 define("BASE_DIR", realpath(getcwd() . '/../static'));
 
@@ -58,18 +59,26 @@ class WebsiteHandler {
 			return;
 		}
 
+		$split_path = explode("/", $request->path());
+
+		$path = $split_path[1];
+
+
 		//Switch and Route path
-		switch ($request->path()) {
-			case "/":
-			case "/index.html":
-			case "/index":
+		switch ($path) {
+			case "":
+			case "index.html":
+			case "index":
 				IndexHandler::Handle($connection, $request);
 				break;
-			case "/beatmaps":
+			case "beatmaps":
 				BeatmapsHandler::Handle($connection, $request);
 				break;
-			case "/leaderboards":
+			case "leaderboards":
 				LeaderboardsHandler::Handle($connection, $request);
+				break;
+			case "mapset":
+				MapsetHandler::Handle($connection, $request);
 				break;
 		}
 	}
