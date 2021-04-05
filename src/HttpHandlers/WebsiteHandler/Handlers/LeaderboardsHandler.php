@@ -4,7 +4,7 @@ namespace oldsu_stream_server\WebsiteHandler\Handlers;
 
 use Workerman\Connection\TcpConnection;
 use Workerman\Protocols\Http\Request;
-use StreamUser;
+use oldsu_stream_server\Objects\StreamUser;
 use DB;
 use Workerman\Protocols\Http\Response;
 use Exception;

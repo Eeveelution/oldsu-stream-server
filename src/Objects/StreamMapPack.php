@@ -1,37 +1,45 @@
 <?php
 
 //Beatmap Pack, for list3.php
-class StreamMapPack implements Writable
-{
-    /**
-     * @var string Pack ID
-     */
+namespace oldsu_stream_server\Objects;
+
+use DB;
+use Writable;
+use oldsu_stream_server\Objects\StreamBeatmap;
+
+class StreamMapPack implements Writable {
+	/**
+	 * @var string Pack ID
+	 */
 	public string $packid;
-    /**
-     * @var string Pack Name
-     */
+	/**
+	 * @var string Pack Name
+	 */
 	public string $packname;
-    /**
-     * @var StreamBeatmap[] Beatmap Array
-     */
+	/**
+	 * @var StreamBeatmap[] Beatmap Array
+	 */
 	public array $beatmaps = array();
-    /**
-     * MapPack constructor.
-     * @param $packid string Pack ID
-     * @param $packname string Pack Name (shows up in osu!stream)
-     */
-    public function __construct(string $packid, string $packname)
-    {
-        $this->packid = $packid;
-        $this->packname = $packname;
-    }
+
+	/**
+	 * MapPack constructor.
+	 *
+	 * @param $packid string Pack ID
+	 * @param $packname string Pack Name (shows up in osu!stream)
+	 */
+	public function __construct(string $packid, string $packname) {
+		$this->packid = $packid;
+		$this->packname = $packname;
+	}
+
 	/**
 	 * @param $beatmap StreamBeatmap Beatmap which is supposed to be added to this pack
 	 */
-    public function AddBeatmap(StreamBeatmap $beatmap) : void {
-        //Append
-        $this->beatmaps[] = $beatmap;
-    }
+	public function AddBeatmap(StreamBeatmap $beatmap) : void {
+		//Append
+		$this->beatmaps[] = $beatmap;
+	}
+
 	/**
 	 * Writes MapPack to a String
 	 *
@@ -39,20 +47,21 @@ class StreamMapPack implements Writable
 	 */
 	public function Write() : string {
 		//Check whether Pack has Beatmaps
-        if(count($this->beatmaps) === 0){
-            trigger_error("No Beatmaps have been added to the Pack!", E_USER_ERROR);
-        }
+		if (count($this->beatmaps) === 0) {
+			trigger_error("No Beatmaps have been added to the Pack!", E_USER_ERROR);
+		}
 		//Define Return string
-        $return_string = "";
+		$return_string = "";
 		//Write Pack ID and Pack name
-        $return_string .= $this->packid . "\t" . $this->packname . "\n";
+		$return_string .= $this->packid . "\t" . $this->packname . "\n";
 		//Write all maps in Pack
-        foreach($this->beatmaps as $beatmap) {
-        	$return_string .= $beatmap->Write();
+		foreach ($this->beatmaps as $beatmap) {
+			$return_string .= $beatmap->Write();
 		}
 		//Return Written String
-        return $return_string;
-    }
+		return $return_string;
+	}
+
 	/**
 	 * @param int $id Pack LocalID
 	 *
@@ -70,13 +79,14 @@ class StreamMapPack implements Writable
 
 		$split_beatmaps = explode(";", $beatmaps);
 
-		foreach($split_beatmaps as $beatmap){
+		foreach ($split_beatmaps as $beatmap) {
 			$databaseBeatmap = StreamBeatmap::FromDatabaseBySetId($beatmap);
 
 			$mappack->AddBeatmap($databaseBeatmap);
 		}
 		return $mappack;
 	}
+
 	/**
 	 * @param string $id Pack PackID
 	 *
@@ -94,21 +104,22 @@ class StreamMapPack implements Writable
 
 		$split_beatmaps = explode(";", $beatmaps);
 
-		foreach($split_beatmaps as $beatmap){
+		foreach ($split_beatmaps as $beatmap) {
 			$databaseBeatmap = StreamBeatmap::FromDatabaseBySetId($beatmap);
 
 			$mappack->AddBeatmap($databaseBeatmap);
 		}
 		return $mappack;
 	}
+
 	/**
 	 * @param string $filename Map Filename
 	 *
 	 * @return StreamBeatmap|null Map in pack with filename `$filename`
 	 */
 	public function GetMapByFilename(string $filename) : ?StreamBeatmap {
-		foreach($this->beatmaps as $beatmap){
-			if($beatmap->filename === $filename){
+		foreach ($this->beatmaps as $beatmap) {
+			if ($beatmap->filename === $filename) {
 				return $beatmap;
 			}
 		}

@@ -5,7 +5,7 @@ namespace oldsu_stream_server\GameServer\Handlers;
 use Workerman\Connection\TcpConnection;
 use Workerman\Protocols\Http\Request;
 use DB;
-use StreamMapPack;
+use oldsu_stream_server\Objects\StreamMapPack;
 
 class PackListHandler
 {

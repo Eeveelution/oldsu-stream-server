@@ -1,5 +1,7 @@
 <?php
 
+namespace oldsu_stream_server\Objects;
+use DB;
 class StreamUser {
 	public int $userId;
 	public string $username;
@@ -24,7 +26,7 @@ class StreamUser {
 
 	public static function FromDatabase(int $userId) : StreamUser {
 		$user = new self();
-		
+
 		$database_result = DB::queryOneRow("SELECT * FROM (SELECT *, ROW_NUMBER() OVER (ORDER BY RankedScore DESC) AS 'Rank' FROM users) t WHERE UserID=%i", $userId);
 
 		$user->username = $database_result["Username"];

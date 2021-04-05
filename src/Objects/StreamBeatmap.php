@@ -1,39 +1,45 @@
 <?php
 
 //Beatmap, used for Map Packs
+namespace oldsu_stream_server\Objects;
+
 use oldsu_stream_server\Helpers\StringParseHelpers;
-class StreamBeatmap implements Writable
-{
+use DB;
+use Writable;
+class StreamBeatmap implements Writable {
 	public string $revision;
 	public string $metadata;
 	public string $filename;
 	public string $creator;
 
 	public int $beatmap_id;
+
 	/**
-     * Beatmap constructor.
-     *
-     * @param $filename string Map Filename (Artist - Title.osz2)
-     * @param $metadata string Map Metadata (Artist - Title)
-     * @param $revision string Map Revision (1.0)
-     */
-    public function __construct(string $filename, string $metadata, string $revision) {
-        $this->filename = $filename;
-        $this->metadata = $metadata;
-        $this->revision = $revision;
-        $this->creator  = StringParseHelpers::GetCreatorFromFilename($this->filename);
-    }
+	 * Beatmap constructor.
+	 *
+	 * @param $filename string Map Filename (Artist - Title.osz2)
+	 * @param $metadata string Map Metadata (Artist - Title)
+	 * @param $revision string Map Revision (1.0)
+	 */
+	public function __construct(string $filename, string $metadata, string $revision) {
+		$this->filename = $filename;
+		$this->metadata = $metadata;
+		$this->revision = $revision;
+		$this->creator = StringParseHelpers::GetCreatorFromFilename($this->filename);
+	}
+
 	/**
 	 * Writes Beatmap to a String
 	 *
 	 * @return string Written String
 	 */
-    public function Write() : string {
-        return $this->filename . "\t" .
-               $this->metadata . "\t" .
-			   $this->metadata . "\t" .
-		       $this->revision . "\n";
-    }
+	public function Write() : string {
+		return $this->filename . "\t" .
+			$this->metadata . "\t" .
+			$this->metadata . "\t" .
+			$this->revision . "\n";
+	}
+
 	/**
 	 * Gets a Beatmap from the Database given a ID
 	 *
@@ -41,8 +47,8 @@ class StreamBeatmap implements Writable
 	 *
 	 * @return StreamBeatmap Beatmap from Database
 	 */
-    public static function FromDatabaseById(int $id) : StreamBeatmap {
-    	//Query Map
+	public static function FromDatabaseById(int $id) : StreamBeatmap {
+		//Query Map
 		$database_results = DB::queryOneRow("SELECT * FROM stream_beatmaps WHERE LocalID=%i", $id);
 		//Gather Results
 		$filename = $database_results["Filename"];
@@ -50,7 +56,8 @@ class StreamBeatmap implements Writable
 		$metadata = $database_results["Metadata"];
 		//Return new Beatmap
 		return new StreamBeatmap($filename, $metadata, $revision);
-    }
+	}
+
 	/**
 	 * @param int $id Beatmap Set ID
 	 *
@@ -77,12 +84,12 @@ class StreamBeatmap implements Writable
 	 */
 	public static function FromDatabaseByFilename(string $filename) : array {
 		//Query Maps
-    	$database_results = DB::query("SELECT * FROM stream_beatmaps WHERE Filename=%s", $filename);
+		$database_results = DB::query("SELECT * FROM stream_beatmaps WHERE Filename=%s", $filename);
 		//Beatmap Array
-    	$beatmaps = array();
+		$beatmaps = array();
 		//Gather Results
-    	foreach ($database_results as $database_result){
-    		//Set Variables for clarity
+		foreach ($database_results as $database_result) {
+			//Set Variables for clarity
 			$filename = $database_result["Filename"];
 			$revision = $database_result["Revision"];
 			$metadata = $database_result["Metadata"];
@@ -93,7 +100,7 @@ class StreamBeatmap implements Writable
 			$beatmaps[] = $beatmap;
 		}
 		//Return Beatmaps
-    	return $beatmaps;
+		return $beatmaps;
 	}
 
 	/**
@@ -104,7 +111,7 @@ class StreamBeatmap implements Writable
 	 */
 	public static function FromDatabaseByFilenameDifficulty(string $filename, int $difficulty) : StreamBeatmap {
 		//Query Map
-		$database_result  = DB::queryOneRow("SELECT * FROM stream_beatmaps WHERE Filename=%s AND Difficulty=%i", $filename, $difficulty);
+		$database_result = DB::queryOneRow("SELECT * FROM stream_beatmaps WHERE Filename=%s AND Difficulty=%i", $filename, $difficulty);
 		//Gather Results
 		$filename = $database_result["Filename"];
 		$revision = $database_result["Revision"];
