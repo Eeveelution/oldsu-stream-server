@@ -5,7 +5,6 @@ namespace oldsu_stream_server\Objects;
 
 use DB;
 use Writable;
-use oldsu_stream_server\Objects\StreamBeatmap;
 
 class StreamMapPack implements Writable {
 	/**

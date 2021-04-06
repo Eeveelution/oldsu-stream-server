@@ -11,6 +11,7 @@ use oldsu_stream_server\GameServer\Handlers\ScoreSubmissionHandler;
 
 use Workerman\Connection\TcpConnection;
 use Workerman\Protocols\Http\Request;
+use oldsu_stream_server\GameServer\Handlers\ConnectHandler;
 
 
 class GameHandler {
@@ -42,6 +43,9 @@ class GameHandler {
 				break;
 			case "/stream/score/submit.php":
 				ScoreSubmissionHandler::Handle($connection, $request);
+				break;
+			case "/stream/auth/connect.php":
+				ConnectHandler::Handle($connection, $request);
 				break;
 		}
 	}

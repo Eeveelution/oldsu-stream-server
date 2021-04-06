@@ -47,6 +47,7 @@ namespace oldsu_stream_server {
             //Distinguish between Website and Game Server
             if( str_starts_with($request->path(), "/stream/dl") ||
 				str_starts_with($request->path(), "/stream/score") ||
+				str_starts_with($request->path(), "/stream/auth") ||
 				str_starts_with($request->path(), "/stream/admin")
 			){
                 GameServer\GameHandler::HandleRequest($connection, $request);

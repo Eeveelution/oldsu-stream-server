@@ -1,7 +1,9 @@
 <?php
 
 namespace oldsu_stream_server\Objects;
+
 use DB;
+
 class StreamUser {
 	public int $userId;
 	public string $username;

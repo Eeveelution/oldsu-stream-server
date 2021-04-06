@@ -6,6 +6,7 @@ namespace oldsu_stream_server\Objects;
 use oldsu_stream_server\Helpers\StringParseHelpers;
 use DB;
 use Writable;
+
 class StreamBeatmap implements Writable {
 	public string $revision;
 	public string $metadata;
