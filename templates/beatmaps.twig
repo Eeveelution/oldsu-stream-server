@@ -5,9 +5,6 @@
 
     <title>oldsu!stream - Beatmap Packs</title>
 
-    <link rel="stylesheet" href="./static/global.css">
-    <link rel="stylesheet" href="./static/grid.css">
-
     <link rel="stylesheet" type="text/css" href="static/beatmaps.css"/>
 
 </head>
@@ -19,14 +16,14 @@
                 {{ pack.packname }}
             </div>
             {% for map in pack.beatmaps %}
-                <a href="mapset/{{ map.beatmap_id }}">
+                <a href="mapset?id={{ map.beatmap_id }}">
                     <div class="pack_container" style="background-image: url('cdn/thumbnails/{{ map.beatmap_id }}'); ">
                         {{ map.metadata }}<br>
                         Created by {{ map.creator }}
                     </div>
                 </a>
             {% endfor %}
-            <a href="cdn/packs/{{ pack.packid }}">
+            <a href="cdn/packs?id={{ pack.packid }}">
                 <div class="pack_download">
                     Download {{ pack.packname }}
                 </div>
