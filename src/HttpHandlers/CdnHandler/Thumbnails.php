@@ -17,6 +17,7 @@ class Thumbnails {
 	 */
 	public static function HandleRequest(TcpConnection $connection, Request $request) : void {
 		try {
+			//TODO:: Fix Path Traversal
 			//Get Thumbnail ID and Parse it to a Int
 			$thumbnail_id = str_replace("/cdn/thumbnails/", "", $request->path());
 			$thumbnail_id = (int) $thumbnail_id;

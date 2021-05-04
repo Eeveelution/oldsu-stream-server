@@ -10,7 +10,7 @@ use GlobalVariables;
 use Workerman\Protocols\Http\Response;
 
 class MapsetHandler {
-	public static function Handle(TcpConnection $connection, Request $request){
+	public static function Handle(TcpConnection $connection, Request $request) : void {
 		try {
 			$html = GlobalVariables::$twig->render('mapset.twig', []);
 			$response = new Response(200, [], $html);
