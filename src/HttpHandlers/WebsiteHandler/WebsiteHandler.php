@@ -14,7 +14,7 @@ use oldsu_stream_server\WebsiteHandler\Handlers\BeatmapsHandler;
 use oldsu_stream_server\WebsiteHandler\Handlers\LeaderboardsHandler;
 use oldsu_stream_server\WebsiteHandler\Handlers\MapsetHandler;
 
-define("BASE_DIR", realpath(getcwd() . '/../static'));
+define("BASE_DIR_STATIC", realpath(getcwd() . '/../static'));
 
 class WebsiteHandler {
 	/**
@@ -34,7 +34,7 @@ class WebsiteHandler {
 				//Getting real path
 				$realpath = realpath($filepath);
 				//Checking for Directory traversal
-				if (!str_starts_with($realpath, BASE_DIR)) {
+				if (!str_starts_with($realpath, BASE_DIR_STATIC)) {
 					$connection->send("fuck off");
 					return;
 				}

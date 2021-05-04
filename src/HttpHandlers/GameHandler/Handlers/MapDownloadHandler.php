@@ -6,6 +6,8 @@ use Workerman\Connection\TcpConnection;
 use Workerman\Protocols\Http\Request;
 use oldsu_stream_server\Objects\StreamMapPack;
 
+define("BASE_DIR_MAPDL", realpath($_ENV["STORAGE_FOLDER"] . "/osz/"));
+
 class MapDownloadHandler
 {
 	/**
@@ -18,15 +20,21 @@ class MapDownloadHandler
 	{
 		$post = $request->post();
 
-		if(strpos($post["filename"], "./" !== false)){
+		//Gets File path
+		$filepath = $_ENV["STORAGE_FOLDER"] . "/osz/" . $post["filename"];
+		//Getting real path
+		$realpath = realpath($filepath);
+		//Checking for Directory traversal
+		if (!str_starts_with($realpath, BASE_DIR_MAPDL)) {
 			$connection->send("fuck off");
+			return;
 		}
 
 		$mappack = StreamMapPack::GetPackByPackId($post["pack"]);
 		$beatmap = $mappack->GetMapByFilename($post["filename"]);
 
 		if($beatmap !== null){
-			$file = file_get_contents($_ENV["STORAGE_FOLDER"] . "/osz/" . $post["filename"]);
+			$file = file_get_contents($filepath);
 			$connection->send($file);
 		}
     }

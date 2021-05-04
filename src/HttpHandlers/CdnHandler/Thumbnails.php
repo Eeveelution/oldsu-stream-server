@@ -8,6 +8,9 @@ use Workerman\Connection\TcpConnection;
 use Workerman\Protocols\Http\Request;
 use Workerman\Protocols\Http\Response;
 use Exception;
+
+define("BASE_DIR_THUMBNAILS", realpath($_ENV["STORAGE_FOLDER"] . "/thumbnails/"));
+
 class Thumbnails {
 	/**
 	 * Handles Requests to the Game Server
@@ -17,10 +20,21 @@ class Thumbnails {
 	 */
 	public static function HandleRequest(TcpConnection $connection, Request $request) : void {
 		try {
-			//TODO:: Fix Path Traversal
+
 			//Get Thumbnail ID and Parse it to a Int
 			$thumbnail_id = str_replace("/cdn/thumbnails/", "", $request->path());
 			$thumbnail_id = (int) $thumbnail_id;
+
+			//Gets File path
+			$filepath = $_ENV["STORAGE_FOLDER"] . "/thumbnails/" . $thumbnail_id . ".jpg";
+			//Getting real path
+			$realpath = realpath($filepath);
+			//Checking for Directory traversal
+			if (!str_starts_with($realpath, BASE_DIR_THUMBNAILS)) {
+				$connection->send("fuck off");
+				return;
+			}
+
 			//Verify it's not 0 and a valid integer
 			if($thumbnail_id !== 0 && is_int($thumbnail_id)) {
 				//Get Filepath and Information
