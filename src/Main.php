@@ -6,6 +6,8 @@ use Mimey\MimeTypes;
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../vendor/sergeytsalkov/meekrodb/db.class.php';
 
+Dotenv::createImmutable(__DIR__."/..")->load();
+
 function _require_all($dir, $depth=0) {
 	// require all php files
 	$scan = glob("$dir/*");
@@ -20,8 +22,6 @@ function _require_all($dir, $depth=0) {
 }
 
 _require_all(__DIR__."/");
-
-Dotenv::createImmutable(__DIR__."/..")->load();
 //Make Warnings throw exceptions
 set_error_handler(static function($errno, $errstr, $errfile, $errline) {
 	// error was suppressed with the @-operator
